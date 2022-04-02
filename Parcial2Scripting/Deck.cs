@@ -48,6 +48,9 @@ namespace Parcial2Scripting
 
         }
 
-       
+       public void AñadirCarta(Carta carta)
+        {
+
+        }
     }
 }
