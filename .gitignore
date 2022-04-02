@@ -353,3 +353,4 @@ MigrationBackup/
 *.props
 *.targets
 *.cache
+*.cache
