@@ -11,6 +11,7 @@ namespace Parcial2Scripting
         private uint attackPoints;
         private uint resistPoints;
         private List<Equip> equip;
+        
         internal enum l_Afinity
         {
             Knight,
@@ -43,5 +44,11 @@ namespace Parcial2Scripting
                 else throw new Exception("Los resistPoints no pueden ser menor a cero");
             }
         }
+
+        public void EquiparCarta(Equip equip)
+        {
+
+        }
+       
     }
 }
