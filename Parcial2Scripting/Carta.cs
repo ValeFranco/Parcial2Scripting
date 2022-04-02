@@ -9,8 +9,8 @@ namespace Parcial2Scripting
     
      abstract class Carta
     {
-        private string name;
-        private uint costPoint;
+        internal string name;
+        internal uint costPoint;
         internal enum l_Rarity { Common, Rare, SuperRare, UltraRare };
         internal l_Rarity rarity;
 

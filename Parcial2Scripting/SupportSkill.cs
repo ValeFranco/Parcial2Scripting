@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Parcial2Scripting
 {
-    public class SupportSkill :Carta 
+    class SupportSkill :Carta 
     {
         internal enum l_effectType {ReduceAP,ReduceRP,ReduceAll,DestroyEquip,RestoreRP}
         internal l_effectType effectType;
-        private uint eddectPoints;
+        internal uint eddectPoints;
 
         public SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint eddectPoints): base(name, costPoint,rarity) 
         {
