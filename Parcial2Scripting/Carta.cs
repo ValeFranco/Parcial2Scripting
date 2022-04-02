@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace Parcial2Scripting
 {
     
-    abstract class Carta
+     abstract class Carta
     {
         private string name;
         private uint costPoint;
-        protected enum l_Rarity { Common, Rare, SuperRare, UltraRare };
-        protected l_Rarity rarity;
+        internal enum l_Rarity { Common, Rare, SuperRare, UltraRare };
+        internal l_Rarity rarity;
 
-        protected Carta(string name, uint costPoint, l_Rarity rarity)
+        public Carta(string name, uint costPoint, l_Rarity rarity)
         {
             this.rarity = rarity;
             Name = name;
