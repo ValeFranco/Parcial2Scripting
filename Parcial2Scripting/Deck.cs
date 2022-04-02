@@ -42,15 +42,12 @@ namespace Parcial2Scripting
                 {
                   nombreJugador = value;
                 }
-
             }
-
-
         }
 
        public void AñadirCarta(Carta carta)
-        {
+       {
 
-        }
+       }
     }
 }
