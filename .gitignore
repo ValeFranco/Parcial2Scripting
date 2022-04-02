@@ -355,3 +355,12 @@ MigrationBackup/
 *.cache
 *.cache
 *.cache
+*.cache
+*.cache
+*.json
+*.targets
+*.props
+*.json
+*.editorconfig
+*.cache
+*.cache
