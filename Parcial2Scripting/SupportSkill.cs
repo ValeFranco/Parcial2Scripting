@@ -12,7 +12,7 @@ namespace Parcial2Scripting
         internal l_effectType effectType;
         internal uint eddectPoints;
 
-        public SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint eddectPoints): base(name, costPoint,rarity) 
+         SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint eddectPoints): base(name, costPoint,rarity) 
         {
             this.effectType = effectType;
             EddectPoints = eddectPoints;
