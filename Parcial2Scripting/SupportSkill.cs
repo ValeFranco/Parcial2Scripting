@@ -12,7 +12,7 @@ namespace Parcial2Scripting
         internal l_effectType effectType;
         internal uint eddectPoints;
 
-         SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint eddectPoints): base(name, costPoint,rarity) 
+        public SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint eddectPoints): base(name, costPoint,rarity) 
         {
             this.effectType = effectType;
             EddectPoints = eddectPoints;
@@ -23,9 +23,6 @@ namespace Parcial2Scripting
                 if (value > 0) eddectPoints = value;
                 else throw new Exception("no puede ser el CostPoint 0 o inferior   ");
             }
-
-
-
         }
     }
 }

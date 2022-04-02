@@ -19,7 +19,7 @@ namespace Parcial2Scripting
         };
         internal l_Afinity afinity;
 
-        public Character(uint attackPoints, uint resistPoints, List<Carta> equip, l_Afinity afinity) : base(name, costPoint, rarity)
+        public Character(string name, uint costPoint,l_Rarity rarity, uint attackPoints, uint resistPoints, List<Carta> equip, l_Afinity afinity): base(name, costPoint, rarity)
         {
             this.attackPoints = attackPoints;
             this.resistPoints = resistPoints;

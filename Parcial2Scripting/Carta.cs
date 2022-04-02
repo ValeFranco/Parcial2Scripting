@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Parcial2Scripting
 {
     
-     abstract class Carta
+     public abstract class Carta
     {
-        internal string name;
-        internal uint costPoint;
-        internal enum l_Rarity { Common, Rare, SuperRare, UltraRare };
-        internal l_Rarity rarity;
+        private string name;
+        private uint costPoint;
+        public enum l_Rarity { Common, Rare, SuperRare, UltraRare };
+        public l_Rarity rarity;
 
         public Carta(string name, uint costPoint, l_Rarity rarity)
         {
@@ -43,9 +43,7 @@ namespace Parcial2Scripting
                 if (value > 0) costPoint = value;
                 else throw new Exception("no puede ser el CostPoint 0 o inferior   ");
             }
-                
-                
-                
-         }
+       
+        }
     }
 }
