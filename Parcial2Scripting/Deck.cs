@@ -34,7 +34,7 @@ namespace Parcial2Scripting
             get => nombreJugador;
             set
             {
-                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 5)
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 3)
                 {
                   throw new Exception("el nombre no puede tener espacios en blanco  ");
                 }
@@ -47,14 +47,11 @@ namespace Parcial2Scripting
 
        public void AnadirCarta(Carta carta)
        {
-            Equip equi;
-            SupportSkill supp;
-            Character chatrac;
+            
             if (cartas.Count()==0)
             {
                 if(carta is Character)
                 {
-                    //chatrac = carta as Character;
                     if (totalPoints >= carta.CostPoint)
                     {
                         cartas.Add(carta);
@@ -67,21 +64,24 @@ namespace Parcial2Scripting
                     }
                   
                 }
-                else if (carta is SupportSkill)
-                {
-                    return;
 
-                }
-                else if (carta is Equip)
+                else
                 {
-                    return;
-
+                    throw new Exception("la primera carta DEBE de ser un character");
                 }
 
             }
             else
             {
-                return;
+                if(totalPoints >= carta.CostPoint)
+                {
+                    cartas.Add(carta);
+                }
+
+                else
+                {
+                    throw new Exception("No tienes suficientes costPoints para a?adir esta carta");
+                }
 
             }
 

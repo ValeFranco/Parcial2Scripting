@@ -11,20 +11,23 @@ namespace Parcial2Scripting
         {
         }
 
-        //Añadir carta a la baraja
+        //A?adir carta a la baraja
         [Test]
-        public void TestAñadirCarta()
+        public void TestAnadirCarta()
         {
+            
             //Restar puntos a la baraja
             Character character = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
             Deck deck = new Deck("Juan");
             deck.AnadirCarta(character);
             Assert.AreEqual(18, deck.totalPoints);
 
-            //Que no se pueda añadir una carta con un costo mayor 
+            //Que no se pueda a?adir una carta con un costo mayor 
             Character character2 = new Character("prueba", 19, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
             var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(character2));
-            Assert.AreEqual("No tienes suficientes costPoints para añadir esta carta", exception.Message);
+            Assert.AreEqual("No tienes suficientes costPoints para a?adir esta carta", exception.Message);
+
+            
         }
         [Test]
         public void TestLimiteCharacter()
@@ -37,6 +40,7 @@ namespace Parcial2Scripting
             Character character5 = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
             Character character6 = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
 
+            
             deck.AnadirCarta(character1);
             deck.AnadirCarta(character2);
             deck.AnadirCarta(character3);
@@ -45,6 +49,8 @@ namespace Parcial2Scripting
 
             var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(character6));
             Assert.AreEqual("Has superado el limite de cartas tipo character", exception.Message);
+            
+
         }
         [Test]
         public void TestLimiteEquip()
@@ -109,13 +115,13 @@ namespace Parcial2Scripting
         [Test]
         public void TestEquiparCartaIgualAfinidad()
         {
-            //Si tiene la misma afinidad se añade
+            //Si tiene la misma afinidad se a?ade
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
 
             character.equip.Add(Equip1);
 
-            //No se añade si no tiene la misma afinidad
+            //No se a?ade si no tiene la misma afinidad
             Character character2 = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Mage);
             Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
 

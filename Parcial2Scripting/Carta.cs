@@ -33,7 +33,7 @@ namespace Parcial2Scripting
                 }
                 else
                 {
-                    Name = value;
+                    name = value;
                 }
 
             }
