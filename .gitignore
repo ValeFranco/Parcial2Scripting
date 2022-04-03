@@ -65,3 +65,10 @@ crashlytics-build.properties
 
 UserSettings/EditorUserSettings.asset
 UserSettings/EditorUserSettings.asset
+Parcial2Scripting/obj/project.nuget.cache
+Parcial2Scripting/obj/project.assets.json
+Parcial2Scripting/obj/Parcial2Scripting.csproj.nuget.g.props
+Parcial2Scripting/obj/Parcial2Scripting.csproj.nuget.dgspec.json
+Parcial2Scripting/obj/Debug/net5.0/Parcial2Scripting.GeneratedMSBuildEditorConfig.editorconfig
+Parcial2Scripting/obj/Debug/net5.0/Parcial2Scripting.assets.cache
+Parcial2Scripting/obj/Debug/net5.0/.NETCoreApp,Version=v5.0.AssemblyAttributes.cs
