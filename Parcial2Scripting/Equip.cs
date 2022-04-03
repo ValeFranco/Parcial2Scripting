@@ -21,6 +21,13 @@ namespace Parcial2Scripting
             this.targetAttribute = targetAttribute;
             this.effectPoints = effectPoints;
         }
+
+        public void AplicarEquip()
+        {
+            //Aumentar el AP segun desea la carta
+            //Aumentar RP segun desea la carta
+            //Que ambas se aumenten
+        }
   
     }
 }

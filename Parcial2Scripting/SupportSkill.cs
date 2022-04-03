@@ -39,18 +39,6 @@ namespace Parcial2Scripting
             //ReducirResist points
             //REducirAmbas
         }
-        //public void ReducirAttackPoints(Character carta)
-        //{
-
-        //}
-        //public void ReducirResistPoints(Character carta)
-        //{
-
-        //}
-        //public void ReducirTodo(Character carta)
-        //{
-
-        //}
         public void DestruirEquipos(Character carta)
         {
 

@@ -217,6 +217,11 @@ namespace Parcial2Scripting
         {
 
         }
+        [Test]
+        public void TestDestruirEquipEnemigo()
+        {
+
+        }
 
         [Test]
         public void TestAplicarEquip()
