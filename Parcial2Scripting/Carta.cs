@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Parcial2Scripting
 {
     
-     public abstract class Carta: Icarta
+     public abstract class Carta
     {
         private string name;
         private uint costPoint;
@@ -46,7 +46,7 @@ namespace Parcial2Scripting
        
         }
 
-        public abstract void afinidad();
+   
         
     }
 }
