@@ -49,5 +49,9 @@ namespace Parcial2Scripting
        {
 
        }
+       public void RemoverCarta(Carta carta)
+       {
+
+       }
     }
 }

@@ -4953,19 +4953,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PERSONAL\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PERSONAL\\Documents\\universidad\\semestre 5\\script\\Parcial2Scripting\\Parcial2Scripting\\Parcial2Scripting.csproj",
+      "projectUniqueName": "D:\\Universidad\\scripting\\Parcial2Scripting\\Parcial2Scripting\\Parcial2Scripting.csproj",
       "projectName": "Parcial2Scripting",
-      "projectPath": "C:\\Users\\PERSONAL\\Documents\\universidad\\semestre 5\\script\\Parcial2Scripting\\Parcial2Scripting\\Parcial2Scripting.csproj",
-      "packagesPath": "C:\\Users\\PERSONAL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PERSONAL\\Documents\\universidad\\semestre 5\\script\\Parcial2Scripting\\Parcial2Scripting\\obj\\",
+      "projectPath": "D:\\Universidad\\scripting\\Parcial2Scripting\\Parcial2Scripting\\Parcial2Scripting.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\Universidad\\scripting\\Parcial2Scripting\\Parcial2Scripting\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PERSONAL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
