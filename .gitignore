@@ -368,3 +368,10 @@ MigrationBackup/
 *.cache
 *.cache
 *.editorconfig
+*.cache
+*.cache
+*.editorconfig
+*.json
+*.props
+*.json
+*.cache

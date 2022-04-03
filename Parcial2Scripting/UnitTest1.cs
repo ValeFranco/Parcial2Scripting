@@ -18,12 +18,12 @@ namespace Parcial2Scripting
             //Restar puntos a la baraja
             Character character = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
             Deck deck = new Deck("Juan");
-            deck.AñadirCarta(character);
+            deck.AnadirCarta(character);
             Assert.AreEqual(18, deck.totalPoints);
 
             //Que no se pueda añadir una carta con un costo mayor 
             Character character2 = new Character("prueba", 19, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
-            var exception = Assert.Throws<System.Exception>(() => deck.AñadirCarta(character2));
+            var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(character2));
             Assert.AreEqual("No tienes suficientes costPoints para añadir esta carta", exception.Message);
         }
         [Test]
@@ -37,13 +37,13 @@ namespace Parcial2Scripting
             Character character5 = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
             Character character6 = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
 
-            deck.AñadirCarta(character1);
-            deck.AñadirCarta(character2);
-            deck.AñadirCarta(character3);
-            deck.AñadirCarta(character4);
-            deck.AñadirCarta(character5);
+            deck.AnadirCarta(character1);
+            deck.AnadirCarta(character2);
+            deck.AnadirCarta(character3);
+            deck.AnadirCarta(character4);
+            deck.AnadirCarta(character5);
 
-            var exception = Assert.Throws<System.Exception>(() => deck.AñadirCarta(character6));
+            var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(character6));
             Assert.AreEqual("Has superado el limite de cartas tipo character", exception.Message);
         }
         [Test]
@@ -62,18 +62,18 @@ namespace Parcial2Scripting
             Equip Equip10 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
             Equip Equip11 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
 
-            deck.AñadirCarta(Equip1);
-            deck.AñadirCarta(Equip2);
-            deck.AñadirCarta(Equip3);
-            deck.AñadirCarta(Equip4);
-            deck.AñadirCarta(Equip5);
-            deck.AñadirCarta(Equip6);
-            deck.AñadirCarta(Equip7);
-            deck.AñadirCarta(Equip8);
-            deck.AñadirCarta(Equip9);
-            deck.AñadirCarta(Equip10);
+            deck.AnadirCarta(Equip1);
+            deck.AnadirCarta(Equip2);
+            deck.AnadirCarta(Equip3);
+            deck.AnadirCarta(Equip4);
+            deck.AnadirCarta(Equip5);
+            deck.AnadirCarta(Equip6);
+            deck.AnadirCarta(Equip7);
+            deck.AnadirCarta(Equip8);
+            deck.AnadirCarta(Equip9);
+            deck.AnadirCarta(Equip10);
 
-            var exception = Assert.Throws<System.Exception>(() => deck.AñadirCarta(Equip11));
+            var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(Equip11));
             Assert.AreEqual("Has superado el limite de cartas tipo equip", exception.Message);
         }
         [Test]
@@ -87,13 +87,13 @@ namespace Parcial2Scripting
             SupportSkill supportSkill5 = new SupportSkill("prueba", 5, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceRP, 8);
             SupportSkill supportSkill6 = new SupportSkill("prueba", 5, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceRP, 8);
 
-            deck.AñadirCarta(supportSkill);
-            deck.AñadirCarta(supportSkill2);
-            deck.AñadirCarta(supportSkill3);
-            deck.AñadirCarta(supportSkill4);
-            deck.AñadirCarta(supportSkill5);
+            deck.AnadirCarta(supportSkill);
+            deck.AnadirCarta(supportSkill2);
+            deck.AnadirCarta(supportSkill3);
+            deck.AnadirCarta(supportSkill4);
+            deck.AnadirCarta(supportSkill5);
 
-            var exception = Assert.Throws<System.Exception>(() => deck.AñadirCarta(supportSkill6));
+            var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(supportSkill6));
             Assert.AreEqual("Has superado el limite de cartas tipo supportSkill", exception.Message);
         }
       

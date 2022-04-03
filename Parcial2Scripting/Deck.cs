@@ -45,10 +45,47 @@ namespace Parcial2Scripting
             }
         }
 
-       public void AñadirCarta(Carta carta)
+       public void AnadirCarta(Carta carta)
        {
+            Equip equi;
+            SupportSkill supp;
+            Character chatrac;
+            if (cartas.Count()==0)
+            {
+                if(carta is Character)
+                {
+                    //chatrac = carta as Character;
+                    if (totalPoints >= carta.CostPoint)
+                    {
+                        cartas.Add(carta);
+                        totalPoints -= carta.CostPoint;
+                        return;
+                    }
+                    else
+                    {
+                        throw new Exception("no hay suficientes puntos ");
+                    }
+                  
+                }
+                else if (carta is SupportSkill)
+                {
+                    return;
 
-       }
+                }
+                else if (carta is Equip)
+                {
+                    return;
+
+                }
+
+            }
+            else
+            {
+                return;
+
+            }
+
+        }
        public void RemoverCarta(Carta carta)
        {
 
