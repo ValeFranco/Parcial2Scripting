@@ -24,5 +24,9 @@ namespace Parcial2Scripting
                 else throw new Exception("no puede ser el CostPoint 0 o inferior   ");
             }
         }
+        public override void afinidad()
+        {
+
+        }
     }
 }

@@ -43,5 +43,6 @@ namespace Parcial2Scripting
                 else throw new Exception("Los resistPoints no pueden ser menor a cero");
             }
         }
+        public override void afinidad() { }
     }
 }

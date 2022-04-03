@@ -21,5 +21,9 @@ namespace Parcial2Scripting
             this.targetAttribute = targetAttribute;
             this.effectPoints = effectPoints;
         }
+        public override void afinidad()
+        {
+
+        }
     }
 }
