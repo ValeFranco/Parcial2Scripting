@@ -9,7 +9,7 @@ namespace Parcial2Scripting
     public class Deck
     {
         private string nombreJugador;
-        internal uint totalPoints;
+        internal uint totalPoints = 20;
         internal List<Carta> cartas;
         private byte characterCount;
         private byte equipCount;

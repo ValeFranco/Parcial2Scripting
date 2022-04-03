@@ -96,11 +96,7 @@ namespace Parcial2Scripting
             var exception = Assert.Throws<System.Exception>(() => deck.AñadirCarta(supportSkill6));
             Assert.AreEqual("Has superado el limite de cartas tipo supportSkill", exception.Message);
         }
-        [Test]
-        public void TestAplicarSkill()
-        {
-            Assert.Pass();
-        }
+      
         [Test]
         public void TestBarajaVacia()
         {
