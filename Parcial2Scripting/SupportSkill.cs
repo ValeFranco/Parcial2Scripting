@@ -32,10 +32,7 @@ namespace Parcial2Scripting
                     
             }
         }
-        public override void afinidad()
-        {
-
-        }
+   
 
         public void ReducirAttackPoints(Character carta)
         {
