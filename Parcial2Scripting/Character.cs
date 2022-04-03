@@ -47,8 +47,17 @@ namespace Parcial2Scripting
 
         public bool AnadirEquip(Equip equipo)
         {
-            //evalua si tiene la misma afinidad y se añade
-            return false;
+            if (equip.Count()<=2 && equip.Count() >=0)
+            {
+                if (equipo.affinity.ToString()== afinity.ToString())
+                {
+                    equip.Add(equipo);
+                    return true;
+                }
+                return false;
+            }
+            else
+                throw new Exception("No se pueden equipar mas de tres cartas tipo equip");
         }
     }
 }
