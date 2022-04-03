@@ -10,7 +10,7 @@ namespace Parcial2Scripting
     {
         private uint attackPoints;
         private uint resistPoints;
-        internal List<Carta> equip;
+        private List<Equip> equip;
         internal enum l_Afinity
         {
             Knight,
@@ -19,12 +19,12 @@ namespace Parcial2Scripting
         };
         internal l_Afinity afinity;
 
-        public Character(string name, uint costPoint,l_Rarity rarity, uint attackPoints, uint resistPoints, List<Carta> equip, l_Afinity afinity): base(name, costPoint, rarity)
+        public Character(string name, uint costPoint,l_Rarity rarity, uint attackPoints, uint resistPoints,  l_Afinity afinity): base(name, costPoint, rarity)
         {
-            this.attackPoints = attackPoints;
-            this.resistPoints = resistPoints;
-            this.equip = equip;
+            AttackPoints = attackPoints;
+            ResistPoints = resistPoints;
             this.afinity = afinity;
+            equip = new List<Equip>();
         }
 
         internal uint AttackPoints
@@ -43,5 +43,6 @@ namespace Parcial2Scripting
                 else throw new Exception("Los resistPoints no pueden ser menor a cero");
             }
         }
+        public override void afinidad() { }
     }
 }
