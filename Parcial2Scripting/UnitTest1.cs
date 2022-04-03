@@ -25,7 +25,7 @@ namespace Parcial2Scripting
             //Que no se pueda a?adir una carta con un costo mayor 
             Character character2 = new Character("prueba", 19, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
             var exception = Assert.Throws<System.Exception>(() => deck.AnadirCarta(character2));
-            Assert.AreEqual("No tienes suficientes costPoints para a?adir esta carta", exception.Message);
+            Assert.AreEqual("No tienes suficientes costPoints para anadir esta carta", exception.Message);
 
             
         }
