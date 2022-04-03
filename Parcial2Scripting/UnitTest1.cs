@@ -169,7 +169,7 @@ namespace Parcial2Scripting
             supportSkillJugador.ReducirAttackPoints(characterEnemigo);
 
             Assert.AreEqual(5, characterEnemigo.AttackPoints); //nose cuanto hay que reducir corregir eso
-        }
+        } //NO
         [Test]
         public void TestReducirRPCartaEnemiga()
         {
@@ -189,7 +189,7 @@ namespace Parcial2Scripting
             supportSkillJugador.ReducirResistPoints(characterEnemigo);
 
             Assert.AreEqual(5, characterEnemigo.ResistPoints); //nose cuanto hay que reducir corregir eso
-        }
+        } //NO
         [Test]
         public void TestReducirAmbosCartaEnemiga()
         {
@@ -211,10 +211,10 @@ namespace Parcial2Scripting
             Assert.AreEqual(5, characterEnemigo.AttackPoints);
             Assert.AreEqual(5, characterEnemigo.ResistPoints);
             //nose cuanto hay que reducir corregir eso
-        }
+        } //NO
 
         [Test]
-        public void TestrRestaurarResistencia()
+        public void TestRestaurarResistencia()
         {
             Assert.Pass();
         }
