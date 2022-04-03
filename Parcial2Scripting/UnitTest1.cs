@@ -151,11 +151,71 @@ namespace Parcial2Scripting
             Assert.AreEqual("No se pueden equipar mas de tres cartas tipo equip", exception.Message);
         }
         [Test]
-        public void TestAplicarSkill()
+        public void TestReducirAPCartaEnemiga()
         {
-            Deck deck1 = new Deck("Vale");
-            Deck deck2 = new Deck("Laura");
+            //que se reduzcan los puntos de ataque de la carta enemiga
+            Tablero tablero = new Tablero();
 
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+
+            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAP, 8);
+            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
+
+            deckJugador.AnadirCarta(supportSkillJugador);
+            deckEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(supportSkillJugador, characterEnemigo); //?
+            supportSkillJugador.ReducirAttackPoints(characterEnemigo);
+
+            Assert.AreEqual(5, characterEnemigo.AttackPoints); //nose cuanto hay que reducir corregir eso
+        }
+        [Test]
+        public void TestReducirRPCartaEnemiga()
+        {
+            //que se reduzcan los puntos de ataque de la carta enemiga
+            Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+
+            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceRP, 8);
+            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 10,10, Character.l_Afinity.Mage);
+
+            deckJugador.AnadirCarta(supportSkillJugador);
+            deckEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(supportSkillJugador, characterEnemigo); //?
+            supportSkillJugador.ReducirResistPoints(characterEnemigo);
+
+            Assert.AreEqual(5, characterEnemigo.ResistPoints); //nose cuanto hay que reducir corregir eso
+        }
+        [Test]
+        public void TestReducirAmbosCartaEnemiga()
+        {
+            //que se reduzcan los puntos de ataque de la carta enemiga
+            Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+
+            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAll, 8);
+            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 10, 10, Character.l_Afinity.Mage);
+
+            deckJugador.AnadirCarta(supportSkillJugador);
+            deckEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(supportSkillJugador, characterEnemigo); //?
+            supportSkillJugador.ReducirTodo(characterEnemigo);
+
+            Assert.AreEqual(5, characterEnemigo.AttackPoints);
+            Assert.AreEqual(5, characterEnemigo.ResistPoints);
+            //nose cuanto hay que reducir corregir eso
+        }
+
+        [Test]
+        public void TestrRestaurarResistencia()
+        {
             Assert.Pass();
         }
 
