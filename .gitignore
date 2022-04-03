@@ -72,3 +72,8 @@ Parcial2Scripting/obj/Parcial2Scripting.csproj.nuget.dgspec.json
 Parcial2Scripting/obj/Debug/net5.0/Parcial2Scripting.GeneratedMSBuildEditorConfig.editorconfig
 Parcial2Scripting/obj/Debug/net5.0/Parcial2Scripting.assets.cache
 Parcial2Scripting/obj/Debug/net5.0/.NETCoreApp,Version=v5.0.AssemblyAttributes.cs
+*.dll
+*.json
+*.CopyComplete
+*.cache
+*.txt
