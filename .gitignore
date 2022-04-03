@@ -375,3 +375,10 @@ MigrationBackup/
 *.props
 *.json
 *.cache
+*.cache
+*.cache
+*.json
+*.props
+*.targets
+*.json
+*.cache

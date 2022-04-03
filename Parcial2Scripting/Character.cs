@@ -10,7 +10,7 @@ namespace Parcial2Scripting
     {
         private uint attackPoints;
         private uint resistPoints;
-        private List<Equip> equip;
+        internal List<Equip> equip;
         internal enum l_Afinity
         {
             Knight,
