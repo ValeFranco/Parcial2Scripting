@@ -44,5 +44,10 @@ namespace Parcial2Scripting
             }
         }
         public override void afinidad() { }
+
+        public void AnadirEquip(Equip equipo)
+        {
+            //evalua si tiene la misma afinidad y se añade
+        }
     }
 }

@@ -125,29 +125,32 @@ namespace Parcial2Scripting
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
 
-            character.equip.Add(Equip1);
+            character.AnadirEquip(Equip1);
+
+            Assert.AreEqual(true, character.AnadirEquip(Equip1));
 
             //No se a?ade si no tiene la misma afinidad
             Character character2 = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Mage);
             Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
 
-            var exception = Assert.Throws<System.Exception>(() => character.equip.Add(Equip2));
-            Assert.AreEqual("No se puede equipar una carta en character que no tenga la misma afinidad", exception.Message);
+            character.AnadirEquip(Equip2);
+
+            Assert.AreEqual(false, character.AnadirEquip(Equip2));
         }
         [Test]
         public void TestLimiteEquiparCartaPorAfinidad()
         {
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
-            Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Mage, Equip.l_targetAttribute.RP, 12);
-            Equip Equip3 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
-            Equip Equip4 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
+            Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            Equip Equip3 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            Equip Equip4 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
 
-            character.equip.Add(Equip1);
-            character.equip.Add(Equip2);
-            character.equip.Add(Equip3);
+            character.AnadirEquip(Equip1);
+            character.AnadirEquip(Equip2);
+            character.AnadirEquip(Equip3);
 
-            var exception = Assert.Throws<System.Exception>(() => character.equip.Add(Equip4));
+            var exception = Assert.Throws<System.Exception>(() => character.AnadirEquip(Equip4));
             Assert.AreEqual("No se pueden equipar mas de tres cartas tipo equip", exception.Message);
         }
         [Test]
@@ -216,43 +219,43 @@ namespace Parcial2Scripting
         [Test]
         public void TestRestaurarResistencia()
         {
-            Assert.Pass();
+
         }
 
         [Test]
         public void TestAplicarEquip()
         {
-            Assert.Pass();
+            
         }
         [Test]
         public void TestRemoverCarta()
         {
-            Assert.Pass();
+            
         }
         [Test]
         public void TestDosBarajasDistintas()
         {
-            Assert.Pass();
+            
         }
         [Test]
         public void TestAtacar()
         {
-            Assert.Pass();
+            
         }
         [Test]
         public void TestDestruirPersonaje()
         {
-            Assert.Pass();
+            
         }
         [Test]
         public void TestJugadorPierde()
         {
-            Assert.Pass();
+            
         }
         [Test]
         public void TestUnicoUsoCarta()
         {
-            Assert.Pass();
+            
         }
     }
 }
