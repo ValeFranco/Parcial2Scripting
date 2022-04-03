@@ -12,7 +12,7 @@ namespace Parcial2Scripting
         internal l_effectType effectType;
         internal uint effectPoints;
 
-        public SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint eddectPoints): base(name, costPoint,rarity) 
+        public SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint effectPoints): base(name, costPoint,rarity) 
         {
             this.effectType = effectType;
             EffectPoints = effectPoints;
@@ -20,8 +20,16 @@ namespace Parcial2Scripting
 
         internal uint EffectPoints { get => effectPoints; set
             {
-                if (value > 0) effectPoints = value;
-                else throw new Exception("no puede ser el CostPoint 0 o inferior   ");
+                if (value > 0)
+                {
+                    effectPoints = value;
+                }
+                    
+                else
+                {
+                    throw new Exception("no puede ser el CostPoint 0 o inferior");
+                }
+                    
             }
         }
         public override void afinidad()

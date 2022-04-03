@@ -55,12 +55,14 @@ namespace Parcial2Scripting
                     if (totalPoints >= carta.CostPoint)
                     {
                         cartas.Add(carta);
+                        characterCount++;
                         totalPoints -= carta.CostPoint;
                         return;
+
                     }
                     else
                     {
-                        throw new Exception("no hay suficientes puntos ");
+                        throw new Exception("No tienes suficientes costPoints para anadir esta carta");
                     }
                   
                 }
@@ -75,12 +77,61 @@ namespace Parcial2Scripting
             {
                 if(totalPoints >= carta.CostPoint)
                 {
-                    cartas.Add(carta);
+                    
+
+                    if(carta is Character)
+                    {
+                        if(characterCount<5)
+                        {
+                            cartas.Add(carta);
+                            totalPoints -= carta.CostPoint;
+                            characterCount++;
+                        }
+
+                        else
+                        {
+                            throw new Exception("Has superado el limite de cartas tipo character");
+                        }
+                       
+                    }
+                    else if(carta is SupportSkill)
+                    {
+                        if(supportCount<5)
+                        {
+                            cartas.Add(carta);
+                            totalPoints -= carta.CostPoint;
+                            supportCount++;
+                        }
+
+                        else
+                        {
+                            throw new Exception("Has superado el limite de cartas tipo supportSkill");
+                        }
+
+
+                    }
+                    else if( carta is Equip)
+                    {
+                        if(equipCount<10)
+                        {
+                            cartas.Add(carta);
+                            totalPoints -= carta.CostPoint;
+                            equipCount++;
+                        }
+
+                        else
+                        {
+                            throw new Exception("Has superado el limite de cartas tipo equip");
+                        }
+
+                    }
+
+                  
                 }
 
                 else
                 {
-                    throw new Exception("No tienes suficientes costPoints para a?adir esta carta");
+                    throw new Exception("No tienes suficientes costPoints para anadir esta carta");
                 }
 
             }
