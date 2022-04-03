@@ -168,8 +168,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.Atacar(supportSkillJugador, characterEnemigo); //?
-            supportSkillJugador.ReducirAttackPoints(characterEnemigo);
+            tablero.Atacar(supportSkillJugador, characterEnemigo); 
 
             Assert.AreEqual(7, characterEnemigo.AttackPoints); 
         } 
@@ -189,8 +188,7 @@ namespace Parcial2Scripting
             deckEnemigo.AnadirCarta(characterEnemigo);
 
             tablero.Atacar(supportSkillJugador, characterEnemigo); 
-            supportSkillJugador.ReducirResistPoints(characterEnemigo);
-
+            
             Assert.AreEqual(2, characterEnemigo.ResistPoints); 
         } 
         [Test]
@@ -209,8 +207,7 @@ namespace Parcial2Scripting
             deckEnemigo.AnadirCarta(characterEnemigo);
 
             tablero.Atacar(supportSkillJugador, characterEnemigo); 
-            supportSkillJugador.ReducirTodo(characterEnemigo);
-
+            
             Assert.AreEqual(10, characterEnemigo.AttackPoints);
             Assert.AreEqual(2, characterEnemigo.ResistPoints);
         } 
