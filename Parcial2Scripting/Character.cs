@@ -10,6 +10,7 @@ namespace Parcial2Scripting
     {
         private uint attackPoints;
         private uint resistPoints;
+        public  uint Heald;
         internal List<Equip> equip;
         internal enum l_Afinity
         {
@@ -25,6 +26,7 @@ namespace Parcial2Scripting
             ResistPoints = resistPoints;
             this.afinity = afinity;
             equip = new List<Equip>();
+            Heald = resistPoints;
         }
 
         internal uint AttackPoints

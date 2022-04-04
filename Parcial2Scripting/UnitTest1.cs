@@ -186,8 +186,9 @@ namespace Parcial2Scripting
             Tablero tablero = new Tablero(deckJugador, deckEnemigo);
 
             SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceRP, 8);
-            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common,10,10, Character.l_Afinity.Mage);
-
+           Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common,15, 10, Character.l_Afinity.Mage);
+            Character characterJugador = new Character("prueba", 2, Carta.l_Rarity.Common, 15, 10, Character.l_Afinity.Mage);
+            deckJugador.AnadirCarta(characterJugador);
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
@@ -220,23 +221,40 @@ namespace Parcial2Scripting
         [Test]
         public void TestRestaurarResistencia()
         {
-
-           
-
-            Deck deckJugador = new Deck("Vale");
+            /*
+                       Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
-
             Tablero tablero = new Tablero(deckJugador, deckEnemigo);
 
-            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.RestoreRP, 3);
-            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 4, 10, Character.l_Afinity.Mage);
-            Character target = new Character("prueba", 2, Carta.l_Rarity.Common, 8, 18, Character.l_Afinity.Mage);
+            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAP, 8);
+            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common,15, 10, Character.l_Afinity.Mage);
+            Character characterJugador = new Character("prueba", 2, Carta.l_Rarity.Common, 15, 10, Character.l_Afinity.Mage);
+            deckJugador.AnadirCarta(characterJugador);
+            deckJugador.AnadirCarta(supportSkillJugador);
+            deckEnemigo.AnadirCarta(characterEnemigo);
+            tablero.Atacar(characterJugador, characterEnemigo);
+            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
 
-            tablero.Atacar(characterEnemigo, target);
+            Assert.AreEqual(7, characterEnemigo.AttackPoints); 
+                */
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
 
-            supportSkillJugador.AplicarSupportSkill(characterEnemigo);
 
-            Assert.AreEqual(17, target.ResistPoints);
+            SupportSkill supportSkillJugador = new SupportSkill("Spartan", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.RestoreRP, 8);
+            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 8, 3, Character.l_Afinity.Mage);
+            Character target = new Character("prueba", 2, Carta.l_Rarity.Common, 4, 10, Character.l_Afinity.Mage);
+
+            deckJugador.AnadirCarta(target);
+            deckJugador.AnadirCarta(supportSkillJugador);
+            deckEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(target, characterEnemigo);
+            tablero.SupporActive(supportSkillJugador, target);
+
+            Assert.AreEqual(10, target.ResistPoints);
+
 
 
         }
