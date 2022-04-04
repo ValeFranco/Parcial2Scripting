@@ -210,16 +210,62 @@ namespace Parcial2Scripting
             
             Assert.AreEqual(10, characterEnemigo.AttackPoints);
             Assert.AreEqual(2, characterEnemigo.ResistPoints);
-        } 
+        }
+
 
         [Test]
         public void TestRestaurarResistencia()
         {
 
+            Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+
+
+            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.RestoreRP, 3);
+            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 4, 10, Character.l_Afinity.Mage);
+            Character target = new Character("prueba", 2, Carta.l_Rarity.Common, 8, 18, Character.l_Afinity.Mage);
+
+            tablero.Atacar(characterEnemigo, target);
+
+            supportSkillJugador.AplicarSupportSkill(characterEnemigo);
+
+            Assert.AreEqual(17, target.ResistPoints);
+
+
         }
         [Test]
         public void TestDestruirEquipEnemigo()
         {
+            Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+
+            Character target = new Character("prueba", 2, Carta.l_Rarity.Common, 8, 18, Character.l_Afinity.Mage);
+
+            Equip equip1 = new Equip("arma1", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 2);
+            Equip equip2 = new Equip("arma2", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 1);
+
+            target.AnadirEquip(equip1);
+            target.AnadirEquip(equip2);
+
+
+            List<Equip> equips = new List<Equip>();
+            equips.Add(equip2);
+
+
+            SupportSkill removeEquip = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.DestroyEquip, 2);
+
+            removeEquip.AplicarSupportSkill(target);
+
+
+            Assert.AreEqual(equips, target.equip);
+
+
+
+
 
         }
         [Test]
