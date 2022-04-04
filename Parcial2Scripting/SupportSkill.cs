@@ -33,20 +33,13 @@ namespace Parcial2Scripting
             }
         }
    
-        public void AplicarSupportSkill()
+        public void AplicarSupportSkill(Character character)
         {
             //Reducir attackPoints
             //ReducirResist points
             //REducirAmbas
         }
-        public void DestruirEquipos(Character carta)
-        {
-
-        }
-        public void RestaurarResistPoints(Character carta)
-        {
-
-        }
+     
 
     }
 }
