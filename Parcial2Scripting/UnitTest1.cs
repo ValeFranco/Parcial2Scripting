@@ -157,18 +157,20 @@ namespace Parcial2Scripting
         public void TestReducirAPCartaEnemiga()
         {
             //que se reduzcan los puntos de ataque de la carta enemiga
-            Tablero tablero = new Tablero();
+          
 
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
 
             SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAP, 8);
             Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common,15, 10, Character.l_Afinity.Mage);
-
+            Character characterJugador = new Character("prueba", 2, Carta.l_Rarity.Common, 15, 10, Character.l_Afinity.Mage);
+            deckJugador.AnadirCarta(characterJugador);
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.Atacar(supportSkillJugador, characterEnemigo); 
+            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
 
             Assert.AreEqual(7, characterEnemigo.AttackPoints); 
         } 
@@ -176,10 +178,12 @@ namespace Parcial2Scripting
         public void TestReducirRPCartaEnemiga()
         {
             //que se reduzcan los puntos de ataque de la carta enemiga
-            Tablero tablero = new Tablero();
+        
 
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
+
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
 
             SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceRP, 8);
             Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common,10,10, Character.l_Afinity.Mage);
@@ -187,7 +191,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.Atacar(supportSkillJugador, characterEnemigo); 
+            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
             
             Assert.AreEqual(2, characterEnemigo.ResistPoints); 
         } 
@@ -195,18 +199,18 @@ namespace Parcial2Scripting
         public void TestReducirAmbosCartaEnemiga()
         {
             //que se reduzcan los puntos de ataque de la carta enemiga
-            Tablero tablero = new Tablero();
-
+           
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
 
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
             SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAll, 8);
             Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 18, 10, Character.l_Afinity.Mage);
 
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.Atacar(supportSkillJugador, characterEnemigo); 
+            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
             
             Assert.AreEqual(10, characterEnemigo.AttackPoints);
             Assert.AreEqual(2, characterEnemigo.ResistPoints);
@@ -262,7 +266,7 @@ namespace Parcial2Scripting
             //Tablero tablero = new Tablero();
 
             Deck deckJugador = new Deck("Vale");
-
+            
             Character characterPropio = new Character("prueba", 2, Carta.l_Rarity.Common, 12, 14, Character.l_Afinity.Knight);
             Equip equip = new Equip("prueba", 3, Carta.l_Rarity.UltraRare, Equip.l_affinity.Mage, Equip.l_targetAttribute.ALL, 6);
 

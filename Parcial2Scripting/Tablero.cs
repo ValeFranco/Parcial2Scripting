@@ -8,8 +8,14 @@ namespace Parcial2Scripting
 {
     class Tablero
     {
-        private Deck player1;
-        private Deck player2;
+        internal Deck player1;
+        internal Deck player2;
+
+        public Tablero(Deck player1, Deck player2)
+        {
+            this.player1 = player1;
+            this.player2 = player2;
+        }
 
         public void Atacar(Carta cartaP1, Carta cartaP2)
         {
@@ -76,9 +82,18 @@ namespace Parcial2Scripting
             }
 
         }
-        public void SupporActive(Carta cartaP1, Carta cartaP2)
+        public void SupporActive(SupportSkill cartaP1, Character cartaP2)
         {
-
+            int carta1 = player1.cartas.IndexOf(cartaP1);
+            int carta2 = player2.cartas.IndexOf(cartaP2);
+            if (carta1 != -1 && carta2 != -1) //comprobar si exites en respectivas cosas 
+            {
+                
+            }
+            else
+            {
+                throw new Exception("No existe estas cartas  en las baraja  del jugador 1 o 2");
+            }
         }
 
 
