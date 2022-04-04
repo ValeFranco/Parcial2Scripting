@@ -222,12 +222,59 @@ namespace Parcial2Scripting
         {
 
         }
-
         [Test]
-        public void TestAplicarEquip()
+        public void TestAumentarAPCartaCharacter()
         {
-            
+            //Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+
+            Character characterPropio = new Character("prueba", 2, Carta.l_Rarity.Common, 15, 10, Character.l_Afinity.Mage);
+            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.SuperRare, Equip.l_affinity.ALL, Equip.l_targetAttribute.AP, 2);
+
+            deckJugador.AnadirCarta(characterPropio);
+            deckJugador.AnadirCarta(equip);
+
+            equip.AplicarEquip(characterPropio, equip);
+     
+            Assert.AreEqual(17, characterPropio.AttackPoints);
         }
+        [Test]
+        public void TestAumentarRPCartaCharacter()
+        {
+            //Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+
+            Character characterPropio = new Character("prueba", 2, Carta.l_Rarity.Rare, 8, 10, Character.l_Afinity.Knight);
+            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.RP, 5);
+
+            deckJugador.AnadirCarta(characterPropio);
+            deckJugador.AnadirCarta(equip);
+
+            equip.AplicarEquip(characterPropio, equip);
+
+            Assert.AreEqual(15, characterPropio.ResistPoints);
+        }
+        [Test]
+        public void TestAumentarAmbosCartaCharacter()
+        {
+            //Tablero tablero = new Tablero();
+
+            Deck deckJugador = new Deck("Vale");
+
+            Character characterPropio = new Character("prueba", 2, Carta.l_Rarity.Common, 12, 14, Character.l_Afinity.Knight);
+            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.UltraRare, Equip.l_affinity.Mage, Equip.l_targetAttribute.ALL, 6);
+
+            deckJugador.AnadirCarta(characterPropio);
+            deckJugador.AnadirCarta(equip);
+
+            equip.AplicarEquip(characterPropio, equip);
+
+            Assert.AreEqual(18, characterPropio.AttackPoints);
+            Assert.AreEqual(20, characterPropio.ResistPoints);
+        }
+
         [Test]
         public void TestRemoverCarta()
         {
