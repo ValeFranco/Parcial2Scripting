@@ -221,11 +221,12 @@ namespace Parcial2Scripting
         public void TestRestaurarResistencia()
         {
 
-            Tablero tablero = new Tablero();
+           
 
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
 
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
 
             SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.RestoreRP, 3);
             Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 4, 10, Character.l_Afinity.Mage);
@@ -242,11 +243,12 @@ namespace Parcial2Scripting
         [Test]
         public void TestDestruirEquipEnemigo()
         {
-            Tablero tablero = new Tablero();
+           
 
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
 
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
             Character target = new Character("prueba", 2, Carta.l_Rarity.Common, 8, 18, Character.l_Afinity.Mage);
 
             Equip equip1 = new Equip("arma1", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 2);
