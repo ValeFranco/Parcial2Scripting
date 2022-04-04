@@ -22,7 +22,7 @@ namespace Parcial2Scripting
             this.effectPoints = effectPoints;
         }
 
-        public void AplicarEquip()
+        public void AplicarEquip(Character carta, Equip equip)
         {
             //Aumentar el AP segun desea la carta
             //Aumentar RP segun desea la carta
