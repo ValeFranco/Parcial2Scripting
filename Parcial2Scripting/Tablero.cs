@@ -38,7 +38,7 @@ namespace Parcial2Scripting
                     if(cartaP1.afinity == cartaP2.afinity)
                     {
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
 
@@ -52,7 +52,7 @@ namespace Parcial2Scripting
                         cartaP2.AttackPoints--;
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -66,7 +66,7 @@ namespace Parcial2Scripting
                         cartaP2.AttackPoints--;
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -81,7 +81,7 @@ namespace Parcial2Scripting
                         cartaP2.AttackPoints--;
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -95,7 +95,7 @@ namespace Parcial2Scripting
                         cartaP2.AttackPoints++;
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -108,7 +108,7 @@ namespace Parcial2Scripting
                 {
 
                     cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                    cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                    cartaP2.ResistPoints -= cartaP1.AttackPoints;
 
                     player1.RemoverCarta(cartaP1);
                     player2.RemoverCarta(cartaP2);
@@ -131,10 +131,10 @@ namespace Parcial2Scripting
 
 
             }
-                else
-                {
-                    throw new Exception("No existe este personaje en la baraja  del jugador ");
-                }
+            else
+            {
+                    throw new Exception("No existe este personaje en la baraja del jugador");
+            }
 
             
           
@@ -201,9 +201,9 @@ namespace Parcial2Scripting
                     }
 
                 }
-                else // si el jugador es enemigo 
+                else 
                 {
-                    throw new Exception("No existe estas cartas  en las baraja  del jugador 1 o 2");
+                    throw new Exception("No existe estas cartas en las baraja  del jugador 1 o 2");
                 }
             }
         }

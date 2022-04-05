@@ -360,7 +360,7 @@ namespace Parcial2Scripting
             barajaEnemigo.AnadirCarta(characterEnemigo);
 
             var exception = Assert.Throws<System.Exception>(() => tablero.Atacar(character, characterEnemigo));
-            Assert.AreEqual("No se puede usar una carta que no este en la baraja", exception.Message);
+            Assert.AreEqual("No existe este personaje en la baraja del jugador", exception.Message);
 
         }
         [Test]
