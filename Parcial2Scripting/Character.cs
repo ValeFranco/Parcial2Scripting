@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Parcial2Scripting
 {
-    class Character : Carta
+    public class Character : Carta
     {
         private uint attackPoints;
         private uint resistPoints;
         public  uint Heald;
         internal List<Equip> equip;
-        internal enum l_Afinity
+        public enum l_Afinity
         {
             Knight,
             Mage,

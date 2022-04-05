@@ -136,9 +136,24 @@ namespace Parcial2Scripting
             }
 
         }
-       public bool RemoverCarta(Carta carta) //destruir carta si sus rp llegan a cero
+       public bool RemoverCarta(Character character) 
        {
-            return false;
+            bool result = false;
+
+            if(character.ResistPoints <= 0)
+            {
+                cartas.Remove(character);
+                result = true;
+                return result;
+
+            }
+
+            else
+            {
+                result = false;
+                return result;
+            }
+           
        }
     }
 }

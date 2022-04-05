@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Parcial2Scripting
 {
-    class Equip : Carta
+    public class Equip : Carta
     {
         public string CartaDueno = "";
         public enum l_targetAttribute {AP, RP, ALL};
         public enum l_affinity {Knight, Mage, Undead, ALL};
-        public l_affinity affinity;
-        public l_targetAttribute targetAttribute;
+        internal l_affinity affinity;
+        internal l_targetAttribute targetAttribute;
         internal uint effectPoints;
         public bool aplicada=false;
 
