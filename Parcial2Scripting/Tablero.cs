@@ -19,45 +19,106 @@ namespace Parcial2Scripting
 
         public void Atacar(Character cartaP1, Character cartaP2)
         {
-                int Charactep1 = player1.cartas.IndexOf(cartaP1);
-                int Charactep2 = player2.cartas.IndexOf(cartaP2);
-                if (Charactep1 !=-1 && Charactep2 !=-1)
-                {
+          int Charactep1 = player1.cartas.IndexOf(cartaP1);
+          int Charactep2 = player2.cartas.IndexOf(cartaP2);
 
-                foreach (Carta elemento in  player1.cartas)
-                {
-                    if (elemento is Character)
+           if (Charactep1 !=-1 && Charactep2 !=-1)
+           {
+           
+
+                    cartaP1 = (player1.cartas.ElementAt(Charactep1)) as Character;
+                    cartaP2 = (player2.cartas.ElementAt(Charactep2)) as Character;
+
+                    //¿hay un empate?
+
+               if(cartaP1.ResistPoints <= cartaP2.AttackPoints && cartaP2.ResistPoints <= cartaP1.AttackPoints)
+               {
+
+                    //carta 1 y carta 2 tienen afinidades iguales
+                    if(cartaP1.afinity == cartaP2.afinity)
                     {
-                        if ((elemento as Character) == cartaP1)
-                        {
-                            (elemento as Character).ResistPoints -= cartaP2.AttackPoints;
-                            cartaP1.ResistPoints = (elemento as Character).ResistPoints;
-                        }
-                 
+                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+
+                        
                     }
-                 
-                   
+
+                    // Carta 1 tiene ventaja sobre carta 2 por ser mago
+                    else if(cartaP1.afinity == Character.l_Afinity.Mage && cartaP2.afinity == Character.l_Afinity.Undead)
+                    {
+                        cartaP1.AttackPoints++;
+                        cartaP2.AttackPoints--;
+
+                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                    }
+
+                    //carta 1 tiene ventaja sobre carta 2 por ser caballero
+
+                    else if(cartaP1.afinity == Character.l_Afinity.Knight && cartaP2.afinity == Character.l_Afinity.Mage)
+                    {
+                        cartaP1.AttackPoints++;
+                        cartaP2.AttackPoints--;
+
+                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+
+                    }
+
+                    // carta 1 tiene ventaja sobre carta 2 por ser undead
+
+                     else if( cartaP1.afinity == Character.l_Afinity.Undead && cartaP2.afinity == Character.l_Afinity.Knight)
+                    {
+                        cartaP1.AttackPoints++;
+                        cartaP2.AttackPoints--;
+
+                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                    }
+
+
+                    //SI NO ESTA EN VENTAJA, ESTA EN DESVENTAJA, ENTONCES:
+                    else
+                    {
+                        cartaP1.AttackPoints--;
+                        cartaP2.AttackPoints++;
+
+                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
+                        cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                    }
+
+
                 }
 
-             //   player1.cartas.Remove(cartaP1);
+               else
+                {
 
-
-
-                //  player1.cartas[0].rarity;
-              //  cartaP1.ResistPoints -= cartaP2.AttackPoints;
-              
-                //player1.cartas.Add(cartaP1);
-                //  player2.cartas.Remove(cartaP2); //eliminamos la carta del jugador 2 ya que gano el primero 
-                return;
-                  
+                    cartaP1.ResistPoints -= cartaP2.AttackPoints;
+                    cartaP2.ResistPoints -= cartaP2.AttackPoints;
 
                 }
+
+
+               // carta1: 4 AP y 5RP MAGO
+               // carta2 5 AP y 4 RP UNDEAD
+
+               // CHECKEO DE AFINIDAD: CARTA1 GANA
+
+               //carta1 : 5AP y 5RP
+               //carta2  4AP y 4RP
+
+               //SE RESTA
+
+               //carta1: 5AP y 1 RP
+               //carta2  4AP -1RP
+
+
+            }
                 else
                 {
                     throw new Exception("No existe este personaje en la baraja  del jugador ");
                 }
 
-                // usuario.l_propia_libros.IndexOf(material);
             
           
 
