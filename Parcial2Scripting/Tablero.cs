@@ -21,7 +21,7 @@ namespace Parcial2Scripting
         {
           int Charactep1 = player1.cartas.IndexOf(cartaP1);
           int Charactep2 = player2.cartas.IndexOf(cartaP2);
-
+           
            if (Charactep1 !=-1 && Charactep2 !=-1)
            {
            
@@ -144,6 +144,8 @@ namespace Parcial2Scripting
         {
             int carta1 = player1.cartas.IndexOf(cartaP1); //si el support exite  en la baraja
             int carta2 = player2.cartas.IndexOf(cartaP2); // si exite el personaje en la baraja enemiga
+                                                          //añadir que se elimine la carta de la baraja 
+
             if (carta1 != -1 && carta2 != -1) //comprobar si exites en respectivas cosas  
             {
                     if (cartaP1.effectType.ToString() == "ReduceAP")
@@ -165,6 +167,8 @@ namespace Parcial2Scripting
 
                     cartaP2.equip.RemoveAt(0);
                     }
+                player1.cartas.Remove(cartaP1);
+
             }
             else
             {
@@ -199,7 +203,7 @@ namespace Parcial2Scripting
 
                         cartaP2.equip.RemoveAt(0);
                     }
-
+                    player1.cartas.Remove(cartaP1);
                 }
                 else 
                 {

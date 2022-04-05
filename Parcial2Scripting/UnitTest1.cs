@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Parcial2Scripting
 {
@@ -251,7 +252,7 @@ namespace Parcial2Scripting
 
             tablero.Atacar(target, characterEnemigo);
             tablero.SupporActive(supportSkillJugador, target);
-
+            Assert.AreEqual(1, deckJugador.cartas.Count());
             Assert.AreEqual(10, target.ResistPoints);
         }
         [Test]
@@ -267,19 +268,28 @@ namespace Parcial2Scripting
             Equip equip1 = new Equip("arma1", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 2);
             Equip equip2 = new Equip("arma2", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 1);
 
+            //añadimos la carta a la baraja del jugador 1
             deckJugador.AnadirCarta(target);
+            deckJugador.AnadirCarta(equip1);
+            deckJugador.AnadirCarta(equip2);
+           // añadimos el  equipo  al  personaje 
             target.AnadirEquip(equip1);
             target.AnadirEquip(equip2);
-        
+    
             List<Equip> equips = new List<Equip>();
             equips.Add(equip2);
 
+            //comprobamos cuantos elementos  hay en la baraja  del jugador 1
+            Assert.AreEqual(3, deckJugador.cartas.Count());
+            // añadimos  suppor y lo añadimos a la baraja
             SupportSkill removeEquip = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.DestroyEquip, 2);
-
+            deckJugador.AnadirCarta(removeEquip);
+            Assert.AreEqual(4, deckJugador.cartas.Count());
+            // aplicamos la carta  y la eliminamos de la baraja 
             tablero.SupporActive(removeEquip,target);
-            removeEquip.AplicarSupportSkill(target);
-
+             //comprobamo
             Assert.AreEqual(equips, target.equip);
+            Assert.AreEqual(3,deckJugador.cartas.Count());
 
         }
         [Test]
