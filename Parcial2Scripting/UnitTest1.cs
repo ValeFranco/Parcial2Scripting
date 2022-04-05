@@ -372,7 +372,7 @@ namespace Parcial2Scripting
             Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
 
             Character characterJugador = new Character("prueba", 3, Carta.l_Rarity.SuperRare, 10, 20, Character.l_Afinity.Mage);
-            Character characterEnemigo = new Character("prueba", 4, Carta.l_Rarity.Common, 5, 20, Character.l_Afinity.Knight);
+            Character characterEnemigo = new Character("prueba", 4, Carta.l_Rarity.Common, 5, 20, Character.l_Afinity.Mage);
 
             barajaJugador.AnadirCarta(characterJugador);
             barajaEnemigo.AnadirCarta(characterEnemigo);
@@ -432,7 +432,7 @@ namespace Parcial2Scripting
             Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
 
             var exception = Assert.Throws<System.Exception>(() => tablero.Atacar(characterJugador, characterEnemigo));
-            Assert.AreEqual("No se usar una carta ya destruida", exception.Message);
+            Assert.AreEqual("No existe este personaje en la baraja del jugador", exception.Message);
         }
     }
 }

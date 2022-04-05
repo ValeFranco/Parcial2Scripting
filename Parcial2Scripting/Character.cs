@@ -8,8 +8,8 @@ namespace Parcial2Scripting
 {
     public class Character : Carta
     {
-        private uint attackPoints;
-        private uint resistPoints;
+        internal uint attackPoints;
+        internal uint resistPoints;
         public  uint Heald;
         internal List<Equip> equip;
         public enum l_Afinity

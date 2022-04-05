@@ -31,14 +31,14 @@ namespace Parcial2Scripting
 
                     //¿hay un empate?
 
-               if(cartaP1.ResistPoints <= cartaP2.AttackPoints && cartaP2.ResistPoints <= cartaP1.AttackPoints)
+               if(cartaP1.resistPoints <= cartaP2.attackPoints && cartaP2.resistPoints <= cartaP1.attackPoints)
                {
 
                     //carta 1 y carta 2 tienen afinidades iguales
                     if(cartaP1.afinity == cartaP2.afinity)
                     {
-                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
+                        cartaP1.resistPoints -= cartaP2.attackPoints;
+                        cartaP2.resistPoints -= cartaP1.attackPoints;
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
 
@@ -48,11 +48,11 @@ namespace Parcial2Scripting
                     // Carta 1 tiene ventaja sobre carta 2 por ser mago
                     else if(cartaP1.afinity == Character.l_Afinity.Mage && cartaP2.afinity == Character.l_Afinity.Undead)
                     {
-                        cartaP1.AttackPoints++;
-                        cartaP2.AttackPoints--;
+                        cartaP1.attackPoints++;
+                        cartaP2.attackPoints--;
 
-                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
+                        cartaP1.resistPoints -= cartaP2.attackPoints;
+                        cartaP2.resistPoints -= cartaP1.attackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -62,11 +62,11 @@ namespace Parcial2Scripting
 
                     else if(cartaP1.afinity == Character.l_Afinity.Knight && cartaP2.afinity == Character.l_Afinity.Mage)
                     {
-                        cartaP1.AttackPoints++;
-                        cartaP2.AttackPoints--;
+                        cartaP1.attackPoints++;
+                        cartaP2.attackPoints--;
 
-                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
+                        cartaP1.resistPoints -= cartaP2.attackPoints;
+                        cartaP2.resistPoints -= cartaP1.attackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -77,11 +77,11 @@ namespace Parcial2Scripting
 
                      else if( cartaP1.afinity == Character.l_Afinity.Undead && cartaP2.afinity == Character.l_Afinity.Knight)
                     {
-                        cartaP1.AttackPoints++;
-                        cartaP2.AttackPoints--;
+                        cartaP1.attackPoints++;
+                        cartaP2.attackPoints--;
 
-                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
+                        cartaP1.resistPoints -= cartaP2.attackPoints;
+                        cartaP2.resistPoints -= cartaP1.attackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -91,11 +91,11 @@ namespace Parcial2Scripting
                     //SI NO ESTA EN VENTAJA, ESTA EN DESVENTAJA, ENTONCES:
                     else
                     {
-                        cartaP1.AttackPoints--;
-                        cartaP2.AttackPoints++;
+                        cartaP1.attackPoints--;
+                        cartaP2.attackPoints++;
 
-                        cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                        cartaP2.ResistPoints -= cartaP1.AttackPoints;
+                        cartaP1.resistPoints -= cartaP2.attackPoints;
+                        cartaP2.resistPoints -= cartaP1.attackPoints;
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
@@ -107,8 +107,8 @@ namespace Parcial2Scripting
                else
                 {
 
-                    cartaP1.ResistPoints -= cartaP2.AttackPoints;
-                    cartaP2.ResistPoints -= cartaP1.AttackPoints;
+                    cartaP1.resistPoints -= cartaP2.attackPoints;
+                    cartaP2.resistPoints -= cartaP1.attackPoints;
 
                     player1.RemoverCarta(cartaP1);
                     player2.RemoverCarta(cartaP2);
