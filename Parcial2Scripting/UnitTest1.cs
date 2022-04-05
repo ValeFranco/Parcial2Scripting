@@ -345,11 +345,6 @@ namespace Parcial2Scripting
             
         //}.
         [Test]
-        public void TestDosBarajasDistintas()
-        {
-            
-        }
-        [Test]
         public void TestCartaNoEstaEnBaraja()
         {
             Deck barajaJugador = new Deck("Jugador1");
