@@ -39,8 +39,10 @@ namespace Parcial2Scripting
                     {
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
                         cartaP2.ResistPoints -= cartaP2.AttackPoints;
+                        player1.RemoverCarta(cartaP1);
+                        player2.RemoverCarta(cartaP2);
 
-                        
+
                     }
 
                     // Carta 1 tiene ventaja sobre carta 2 por ser mago
@@ -51,6 +53,9 @@ namespace Parcial2Scripting
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
                         cartaP2.ResistPoints -= cartaP2.AttackPoints;
+
+                        player1.RemoverCarta(cartaP1);
+                        player2.RemoverCarta(cartaP2);
                     }
 
                     //carta 1 tiene ventaja sobre carta 2 por ser caballero
@@ -63,6 +68,9 @@ namespace Parcial2Scripting
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
                         cartaP2.ResistPoints -= cartaP2.AttackPoints;
 
+                        player1.RemoverCarta(cartaP1);
+                        player2.RemoverCarta(cartaP2);
+
                     }
 
                     // carta 1 tiene ventaja sobre carta 2 por ser undead
@@ -74,6 +82,9 @@ namespace Parcial2Scripting
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
                         cartaP2.ResistPoints -= cartaP2.AttackPoints;
+
+                        player1.RemoverCarta(cartaP1);
+                        player2.RemoverCarta(cartaP2);
                     }
 
 
@@ -85,6 +96,9 @@ namespace Parcial2Scripting
 
                         cartaP1.ResistPoints -= cartaP2.AttackPoints;
                         cartaP2.ResistPoints -= cartaP2.AttackPoints;
+
+                        player1.RemoverCarta(cartaP1);
+                        player2.RemoverCarta(cartaP2);
                     }
 
 
@@ -95,6 +109,9 @@ namespace Parcial2Scripting
 
                     cartaP1.ResistPoints -= cartaP2.AttackPoints;
                     cartaP2.ResistPoints -= cartaP2.AttackPoints;
+
+                    player1.RemoverCarta(cartaP1);
+                    player2.RemoverCarta(cartaP2);
 
                 }
 

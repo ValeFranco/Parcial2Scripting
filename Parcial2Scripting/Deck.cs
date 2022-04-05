@@ -138,7 +138,7 @@ namespace Parcial2Scripting
         }
        public bool RemoverCarta(Character character) 
        {
-            bool result = false;
+            bool result;
 
             if(character.ResistPoints <= 0)
             {
