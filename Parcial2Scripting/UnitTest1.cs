@@ -125,15 +125,15 @@ namespace Parcial2Scripting
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
 
-            character.AnadirEquip(Equip1);
+            
 
             Assert.AreEqual(true, character.AnadirEquip(Equip1));
 
             //No se a?ade si no tiene la misma afinidad
             Character character2 = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Mage);
-            Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
+            Equip Equip2 = new Equip("prueba2", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
 
-            character.AnadirEquip(Equip2);
+           
 
             Assert.AreEqual(false, character.AnadirEquip(Equip2));
         }
@@ -308,9 +308,9 @@ namespace Parcial2Scripting
 
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
+            characterPropio.AnadirEquip(equip);
+            // equip.AplicarEquip(characterPropio);
 
-            equip.AplicarEquip(characterPropio);
-     
             Assert.AreEqual(17, characterPropio.AttackPoints);
         }
         [Test]
@@ -321,12 +321,12 @@ namespace Parcial2Scripting
             Deck deckJugador = new Deck("Vale");
 
             Character characterPropio = new Character("prueba", 2, Carta.l_Rarity.Rare, 8, 10, Character.l_Afinity.Knight);
-            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.RP, 5);
+            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.Common, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 5);
 
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
-
-            equip.AplicarEquip(characterPropio);
+            characterPropio.AnadirEquip(equip);
+           
 
             Assert.AreEqual(15, characterPropio.ResistPoints);
         }
@@ -338,16 +338,20 @@ namespace Parcial2Scripting
             Deck deckJugador = new Deck("Vale");
             
             Character characterPropio = new Character("prueba", 2, Carta.l_Rarity.Common, 12, 14, Character.l_Afinity.Knight);
-            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.UltraRare, Equip.l_affinity.Mage, Equip.l_targetAttribute.ALL, 6);
+            Equip equip = new Equip("prueba", 3, Carta.l_Rarity.UltraRare, Equip.l_affinity.Knight, Equip.l_targetAttribute.ALL, 6);
 
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
-
-            equip.AplicarEquip(characterPropio);
+            characterPropio.AnadirEquip(equip);
+          
 
             Assert.AreEqual(18, characterPropio.AttackPoints);
-            equip.AplicarEquip(characterPropio);
+           
             Assert.AreEqual(20, characterPropio.ResistPoints);
+ 
+
+            var exception = Assert.Throws<System.Exception>(() => characterPropio.AplicarEquip(equip));
+            Assert.AreEqual("la carta fue aplicada con anterioridad", exception.Message);
         }
 
         [Test]
