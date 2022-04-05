@@ -217,8 +217,6 @@ namespace Parcial2Scripting
             Assert.AreEqual(10, characterEnemigo.AttackPoints);
             Assert.AreEqual(2, characterEnemigo.ResistPoints);
         }
-
-
         [Test]
         public void TestRestaurarResistencia()
         {
@@ -255,15 +253,10 @@ namespace Parcial2Scripting
             tablero.SupporActive(supportSkillJugador, target);
 
             Assert.AreEqual(10, target.ResistPoints);
-
-
-
         }
         [Test]
         public void TestDestruirEquipEnemigo()
         {
-           
-
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
 
@@ -281,19 +274,12 @@ namespace Parcial2Scripting
             List<Equip> equips = new List<Equip>();
             equips.Add(equip2);
 
-
             SupportSkill removeEquip = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.DestroyEquip, 2);
-
 
             tablero.SupporActive(removeEquip,target);
             removeEquip.AplicarSupportSkill(target);
 
-
             Assert.AreEqual(equips, target.equip);
-
-
-
-
 
         }
         [Test]
@@ -353,26 +339,78 @@ namespace Parcial2Scripting
             var exception = Assert.Throws<System.Exception>(() => characterPropio.AplicarEquip(equip));
             Assert.AreEqual("la carta fue aplicada con anterioridad", exception.Message);
         }
-
-        [Test]
-        public void TestRemoverCarta()
-        {
+        //[Test]
+        //public void TestRemoverCarta()
+        //{
             
-        }
+        //}.
         [Test]
         public void TestDosBarajasDistintas()
         {
             
         }
         [Test]
+        public void TestCartaNoEstaEnBaraja()
+        {
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
+            Character character = new Character("prueba", 20, Carta.l_Rarity.Common, 14, 10, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 5, 14, Character.l_Afinity.Knight);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            var exception = Assert.Throws<System.Exception>(() => tablero.Atacar(character, characterEnemigo));
+            Assert.AreEqual("No se puede usar una carta que no este en la baraja", exception.Message);
+
+        }
+        [Test]
         public void TestAtacar()
         {
-            
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 3, Carta.l_Rarity.SuperRare, 10, 20, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 4, Carta.l_Rarity.Common, 5, 20, Character.l_Afinity.Knight);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+
+            Assert.AreEqual(15, characterJugador.ResistPoints);
+            Assert.AreEqual(10, characterEnemigo.ResistPoints);
+
+        }
+        [Test]
+        public void TestEmpate()
+        {
+
         }
         [Test]
         public void TestDestruirPersonaje()
         {
-            
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+           
+            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 5, 14, Character.l_Afinity.Mage);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+
+            Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
+    
         }
         [Test]
         public void TestJugadorPierde()
@@ -382,7 +420,24 @@ namespace Parcial2Scripting
         [Test]
         public void TestUnicoUsoCarta()
         {
-            
+
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 5, 14, Character.l_Afinity.Mage);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+
+            Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
+
+            var exception = Assert.Throws<System.Exception>(() => tablero.Atacar(characterJugador, characterEnemigo));
+            Assert.AreEqual("No se usar una carta ya destruida", exception.Message);
         }
     }
 }

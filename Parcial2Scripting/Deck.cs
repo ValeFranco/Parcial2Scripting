@@ -136,9 +136,9 @@ namespace Parcial2Scripting
             }
 
         }
-       public void RemoverCarta(Carta carta)
+       public bool RemoverCarta(Carta carta) //destruir carta si sus rp llegan a cero
        {
-
+            return false;
        }
     }
 }
