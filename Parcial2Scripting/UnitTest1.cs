@@ -6,12 +6,10 @@ namespace Parcial2Scripting
 {
     public class Tests
     {
-
         [SetUp]
         public void Setup()
         {
         }
-
         //A?adir carta a la baraja
         [Test]
         public void TestAnadirCarta()
@@ -126,15 +124,11 @@ namespace Parcial2Scripting
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
 
-            
-
             Assert.AreEqual(true, character.AnadirEquip(Equip1));
 
             //No se a?ade si no tiene la misma afinidad
             Character character2 = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Mage);
             Equip Equip2 = new Equip("prueba2", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
-
-           
 
             Assert.AreEqual(false, character.AnadirEquip(Equip2));
         }
@@ -221,22 +215,6 @@ namespace Parcial2Scripting
         [Test]
         public void TestRestaurarResistencia()
         {
-            /*
-                       Deck deckJugador = new Deck("Vale");
-            Deck deckEnemigo = new Deck("Laura");
-            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
-
-            SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAP, 8);
-            Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common,15, 10, Character.l_Afinity.Mage);
-            Character characterJugador = new Character("prueba", 2, Carta.l_Rarity.Common, 15, 10, Character.l_Afinity.Mage);
-            deckJugador.AnadirCarta(characterJugador);
-            deckJugador.AnadirCarta(supportSkillJugador);
-            deckEnemigo.AnadirCarta(characterEnemigo);
-            tablero.Atacar(characterJugador, characterEnemigo);
-            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
-
-            Assert.AreEqual(7, characterEnemigo.AttackPoints); 
-                */
             Deck deckJugador = new Deck("Vale");
             Deck deckEnemigo = new Deck("Laura");
             Tablero tablero = new Tablero(deckJugador, deckEnemigo);
@@ -339,21 +317,13 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
             characterPropio.AnadirEquip(equip);
-          
 
-            Assert.AreEqual(18, characterPropio.AttackPoints);
-           
+            Assert.AreEqual(18, characterPropio.AttackPoints); 
             Assert.AreEqual(20, characterPropio.ResistPoints);
- 
 
             var exception = Assert.Throws<System.Exception>(() => characterPropio.AplicarEquip(equip));
             Assert.AreEqual("la carta fue aplicada con anterioridad", exception.Message);
         }
-        //[Test]
-        //public void TestRemoverCarta()
-        //{
-            
-        //}.
         [Test]
         public void TestCartaNoEstaEnBaraja()
         {
@@ -396,6 +366,21 @@ namespace Parcial2Scripting
         [Test]
         public void TestEmpate()
         {
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 2, Carta.l_Rarity.Rare, 4, 5, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 5, Carta.l_Rarity.Rare, 5, 4, Character.l_Afinity.Undead);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+
+            Assert.AreEqual(false, barajaJugador.RemoverCarta(characterJugador));
+            Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
 
         }
         [Test]
@@ -420,7 +405,26 @@ namespace Parcial2Scripting
         [Test]
         public void TestJugadorPierde()
         {
-            
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 2, Carta.l_Rarity.Rare, 6, 8, Character.l_Afinity.Mage);
+            Character characterJugador2 = new Character("prueba", 4, Carta.l_Rarity.Rare, 7, 9, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 5, Carta.l_Rarity.Rare,20, 18, Character.l_Afinity.Mage);
+            Character characterEnemigo2 = new Character("prueba", 13, Carta.l_Rarity.Rare, 25, 14, Character.l_Afinity.Mage);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaJugador.AnadirCarta(characterJugador2);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+            barajaEnemigo.AnadirCarta(characterEnemigo2);           
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+            tablero.Atacar(characterJugador2, characterEnemigo2);
+
+            Assert.AreEqual(true, tablero.PierdeJugador(barajaJugador));
+
         }
         [Test]
         public void TestUnicoUsoCarta()

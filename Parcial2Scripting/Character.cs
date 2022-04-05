@@ -51,7 +51,6 @@ namespace Parcial2Scripting
         {
             if (equip.Count()<=2 && equip.Count() >=0)
             {
-              
                 if (equipo.affinity.ToString()== afinity.ToString() || equipo.affinity.ToString()== "ALL")
                 {
                     equip.Add(equipo);
@@ -65,43 +64,27 @@ namespace Parcial2Scripting
         }
         public void AplicarEquip(Equip equipo)
         {
-
             if (!equipo.aplicada)
             {
                 equipo.aplicada = true;
                 if (equipo.targetAttribute.ToString() == "AP")
                 {
                    AttackPoints += equipo.effectPoints;
-
-
                 }
                 else if (equipo.targetAttribute.ToString() == "RP")
                 {
                   ResistPoints += equipo.effectPoints;
-
                 }
                 else if (equipo.targetAttribute.ToString() == "ALL")
                 {
-
                    AttackPoints += equipo.effectPoints;
                    ResistPoints += equipo.effectPoints;
-
                 }
-
-
             }
             else
             {
                 throw new Exception("la carta fue aplicada con anterioridad");
             }
-
-
-
-
-            //Aumentar el AP segun desea la carta
-            //Aumentar RP segun desea la carta
-            //Que ambas se aumenten
         }
-
     }
 }
