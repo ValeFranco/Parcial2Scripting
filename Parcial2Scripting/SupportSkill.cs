@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Parcial2Scripting
 {
-    class SupportSkill :Carta 
+    public class SupportSkill :Carta 
     {
-        internal enum l_effectType {ReduceAP,ReduceRP,ReduceAll,DestroyEquip,RestoreRP}
+        public enum l_effectType {ReduceAP,ReduceRP,ReduceAll,DestroyEquip,RestoreRP}
         internal l_effectType effectType;
         internal uint effectPoints;
 
