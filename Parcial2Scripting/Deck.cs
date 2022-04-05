@@ -144,16 +144,14 @@ namespace Parcial2Scripting
             {
                 cartas.Remove(character);
                 result = true;
-                return result;
-
+  
             }
-
             else
             {
                 result = false;
-                return result;
+                
             }
-           
+            return result;
        }
 
     }
