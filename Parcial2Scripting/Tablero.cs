@@ -23,9 +23,30 @@ namespace Parcial2Scripting
                 int Charactep2 = player2.cartas.IndexOf(cartaP2);
                 if (Charactep1 !=-1 && Charactep2 !=-1)
                 {
-                    
-                      cartaP1.ResistPoints -=cartaP2.AttackPoints;
-                      cartaP2.ResistPoints -= cartaP1.AttackPoints;
+
+                foreach (Carta elemento in  player1.cartas)
+                {
+                    if (elemento is Character)
+                    {
+                        if ((elemento as Character) == cartaP1)
+                        {
+                            (elemento as Character).ResistPoints -= cartaP2.AttackPoints;
+                            cartaP1.ResistPoints = (elemento as Character).ResistPoints;
+                        }
+                 
+                    }
+                 
+                   
+                }
+
+             //   player1.cartas.Remove(cartaP1);
+
+
+
+                //  player1.cartas[0].rarity;
+              //  cartaP1.ResistPoints -= cartaP2.AttackPoints;
+              
+                //player1.cartas.Add(cartaP1);
                 //  player2.cartas.Remove(cartaP2); //eliminamos la carta del jugador 2 ya que gano el primero 
                 return;
                   
@@ -43,11 +64,10 @@ namespace Parcial2Scripting
         }
         public void SupporActive(SupportSkill cartaP1, Character cartaP2)
         {
-            int carta1 = player1.cartas.IndexOf(cartaP1);
-            int carta2 = player2.cartas.IndexOf(cartaP2);
+            int carta1 = player1.cartas.IndexOf(cartaP1); //si el support exite  en la baraja
+            int carta2 = player2.cartas.IndexOf(cartaP2); // si exite el personaje en la baraja enemiga
             if (carta1 != -1 && carta2 != -1) //comprobar si exites en respectivas cosas  
             {
-               
                     if (cartaP1.effectType.ToString() == "ReduceAP")
                     {
                         cartaP2.AttackPoints -= cartaP1.effectPoints;
@@ -65,11 +85,8 @@ namespace Parcial2Scripting
                     else if (cartaP1.effectType.ToString() == "DestroyEquip")
                     {
 
+                    cartaP2.equip.RemoveAt(0);
                     }
-                
-               
-
-             
             }
             else
             {
@@ -81,13 +98,28 @@ namespace Parcial2Scripting
                         if (cartaP2.ResistPoints + cartaP1.effectPoints > cartaP2.Heald)//si es mayor 
                         {
                             cartaP2.ResistPoints = cartaP2.Heald;
+                            foreach (Carta elemento in player1.cartas)
+                            {
+                                if (elemento is Character)
+                                {
+                                    cartaP2.ResistPoints = (elemento as Character).ResistPoints;
+                                }
+
+
+                            }
                         }
                         else
                         {
                             cartaP2.ResistPoints += cartaP1.effectPoints;
+
                         }
 
 
+                    }
+                    else if (cartaP1.effectType.ToString() == "DestroyEquip")
+                    {
+
+                        cartaP2.equip.RemoveAt(0);
                     }
 
                 }

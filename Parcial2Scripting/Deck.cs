@@ -19,7 +19,6 @@ namespace Parcial2Scripting
         public Deck(string nombreJugador)
         {
             NombreJugador = nombreJugador;
-
             characterCount = 0;
             supportCount = 0;
             equipCount = 0;

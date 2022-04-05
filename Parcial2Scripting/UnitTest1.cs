@@ -207,7 +207,8 @@ namespace Parcial2Scripting
             Tablero tablero = new Tablero(deckJugador, deckEnemigo);
             SupportSkill supportSkillJugador = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.ReduceAll, 8);
             Character characterEnemigo = new Character("prueba", 2, Carta.l_Rarity.Common, 18, 10, Character.l_Afinity.Mage);
-
+            Character CharacterJugador = new Character("lordes", 4, Carta.l_Rarity.Common, 18, 10, Character.l_Afinity.Mage);
+            deckJugador.AnadirCarta(CharacterJugador);
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
@@ -268,20 +269,23 @@ namespace Parcial2Scripting
 
             Tablero tablero = new Tablero(deckJugador, deckEnemigo);
             Character target = new Character("prueba", 2, Carta.l_Rarity.Common, 8, 18, Character.l_Afinity.Mage);
+            Character enemigo  = new Character("enemigo", 2, Carta.l_Rarity.Common, 8, 18, Character.l_Afinity.Mage);
 
             Equip equip1 = new Equip("arma1", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 2);
             Equip equip2 = new Equip("arma2", 1, Carta.l_Rarity.Common, Equip.l_affinity.Mage, Equip.l_targetAttribute.AP, 1);
 
+            deckJugador.AnadirCarta(target);
             target.AnadirEquip(equip1);
             target.AnadirEquip(equip2);
-
-
+        
             List<Equip> equips = new List<Equip>();
             equips.Add(equip2);
 
 
             SupportSkill removeEquip = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.DestroyEquip, 2);
 
+
+            tablero.SupporActive(removeEquip,target);
             removeEquip.AplicarSupportSkill(target);
 
 
@@ -305,7 +309,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
 
-            equip.AplicarEquip(characterPropio, equip);
+            equip.AplicarEquip(characterPropio);
      
             Assert.AreEqual(17, characterPropio.AttackPoints);
         }
@@ -322,7 +326,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
 
-            equip.AplicarEquip(characterPropio, equip);
+            equip.AplicarEquip(characterPropio);
 
             Assert.AreEqual(15, characterPropio.ResistPoints);
         }
@@ -339,9 +343,10 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
 
-            equip.AplicarEquip(characterPropio, equip);
+            equip.AplicarEquip(characterPropio);
 
             Assert.AreEqual(18, characterPropio.AttackPoints);
+            equip.AplicarEquip(characterPropio);
             Assert.AreEqual(20, characterPropio.ResistPoints);
         }
 
