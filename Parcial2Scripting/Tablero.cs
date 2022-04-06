@@ -213,12 +213,38 @@ namespace Parcial2Scripting
             }
         }
 
-        public bool PierdeJugador(Deck player1)
+        public bool PierdeJugador()
         {
             bool result=true;
             if(player1.cartas.Count != 0)
             {
                 foreach (Carta carta in player1.cartas)
+                {
+                    if (carta is Character)
+                    {
+                        result = false;
+                    }
+                    else
+                    {
+                        result = true;
+                    }
+
+                }
+            }
+            else
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+        public bool PierdeRival()
+        {
+            bool result = true;
+            if (player2.cartas.Count != 0)
+            {
+                foreach (Carta carta in player2.cartas)
                 {
                     if (carta is Character)
                     {

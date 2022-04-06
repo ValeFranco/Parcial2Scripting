@@ -154,5 +154,12 @@ namespace Parcial2Scripting
             return result;
        }
 
+       public void eliminarequipo(Equip equipo)
+        {
+            cartas.Remove(equipo);
+        }
+
+       
+
     }
 }
