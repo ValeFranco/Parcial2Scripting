@@ -10,6 +10,7 @@ namespace Parcial2Scripting
         public void Setup()
         {
         }
+        //A?adir carta a la baraja
         [Test]
         public void TestAnadirCarta()
         {
@@ -119,33 +120,71 @@ namespace Parcial2Scripting
         [Test]
         public void TestEquiparCartaIgualAfinidad()
         {
-            //Si tiene la misma afinidad se a?ade
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
+
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            deckJugador.AnadirCarta(character);
+            deckJugador.AnadirCarta(Equip1);
 
-            Assert.AreEqual(true, character.AnadirEquip(Equip1));
+            Assert.AreEqual(true, character.AnadirEquip(Equip1, deckJugador));
 
             //No se a?ade si no tiene la misma afinidad
             Character character2 = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Mage);
             Equip Equip2 = new Equip("prueba2", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Knight, Equip.l_targetAttribute.RP, 12);
 
-            Assert.AreEqual(false, character.AnadirEquip(Equip2));
+            Assert.AreEqual(false, character.AnadirEquip(Equip2, deckJugador));
         }
         [Test]
         public void TestLimiteEquiparCartaPorAfinidad()
         {
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
+
             Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
             Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
             Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
             Equip Equip3 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
             Equip Equip4 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            deckJugador.AnadirCarta(character);
+            deckJugador.AnadirCarta(Equip1);
+            deckJugador.AnadirCarta(Equip2);
+            deckJugador.AnadirCarta(Equip3);
+            deckJugador.AnadirCarta(Equip4);
+            character.AnadirEquip(Equip1, deckJugador);
+            character.AnadirEquip(Equip2, deckJugador);
+            character.AnadirEquip(Equip3, deckJugador);
 
-            character.AnadirEquip(Equip1);
-            character.AnadirEquip(Equip2);
-            character.AnadirEquip(Equip3);
-
-            var exception = Assert.Throws<System.Exception>(() => character.AnadirEquip(Equip4));
+            var exception = Assert.Throws<System.Exception>(() => character.AnadirEquip(Equip4, deckJugador));
             Assert.AreEqual("No se pueden equipar mas de tres cartas tipo equip", exception.Message);
+        }
+
+        [Test]
+        public void TestEliminarEquipoBaraja()
+        {
+            Deck deckJugador = new Deck("Vale");
+            Deck deckEnemigo = new Deck("Laura");
+            Tablero tablero = new Tablero(deckJugador, deckEnemigo);
+
+            Character character = new Character("prueba", 5, Carta.l_Rarity.SuperRare, 17, 17, Character.l_Afinity.Undead);
+            Equip Equip1 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            Equip Equip2 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            Equip Equip3 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            Equip Equip4 = new Equip("prueba", 3, Carta.l_Rarity.Rare, Equip.l_affinity.Undead, Equip.l_targetAttribute.RP, 12);
+            deckJugador.AnadirCarta(character);
+            deckJugador.AnadirCarta(Equip1);
+            deckJugador.AnadirCarta(Equip2);
+
+            Assert.AreEqual(3, deckJugador.cartas.Count());
+            character.AnadirEquip(Equip1, deckJugador);
+            Assert.AreEqual(2, deckJugador.cartas.Count());
+            character.AnadirEquip(Equip2, deckJugador);
+            Assert.AreEqual(1, deckJugador.cartas.Count());
+
+
         }
         [Test]
         public void TestReducirAPCartaEnemiga()
@@ -250,23 +289,23 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(equip1);
             deckJugador.AnadirCarta(equip2);
            // añadimos el  equipo  al  personaje 
-            target.AnadirEquip(equip1);
-            target.AnadirEquip(equip2);
+            target.AnadirEquip(equip1,deckJugador);
+            target.AnadirEquip(equip2,deckJugador);
     
             List<Equip> equips = new List<Equip>();
             equips.Add(equip2);
 
             //comprobamos cuantos elementos  hay en la baraja  del jugador 1
-            Assert.AreEqual(3, deckJugador.cartas.Count());
+            Assert.AreEqual(1, deckJugador.cartas.Count());
             // añadimos  suppor y lo añadimos a la baraja
             SupportSkill removeEquip = new SupportSkill("prueba", 1, Carta.l_Rarity.UltraRare, SupportSkill.l_effectType.DestroyEquip, 2);
             deckJugador.AnadirCarta(removeEquip);
-            Assert.AreEqual(4, deckJugador.cartas.Count());
+            Assert.AreEqual(2, deckJugador.cartas.Count());
             // aplicamos la carta  y la eliminamos de la baraja 
             tablero.SupporActive(removeEquip,target);
              //comprobamo
             Assert.AreEqual(equips, target.equip);
-            Assert.AreEqual(3,deckJugador.cartas.Count());
+            Assert.AreEqual(1,deckJugador.cartas.Count());
 
         }
         [Test]
@@ -281,7 +320,7 @@ namespace Parcial2Scripting
 
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
-            characterPropio.AnadirEquip(equip);
+            characterPropio.AnadirEquip(equip,deckJugador);
             // equip.AplicarEquip(characterPropio);
 
             Assert.AreEqual(17, characterPropio.AttackPoints);
@@ -298,7 +337,7 @@ namespace Parcial2Scripting
 
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
-            characterPropio.AnadirEquip(equip);
+            characterPropio.AnadirEquip(equip,deckJugador);
            
 
             Assert.AreEqual(15, characterPropio.ResistPoints);
@@ -315,7 +354,7 @@ namespace Parcial2Scripting
 
             deckJugador.AnadirCarta(characterPropio);
             deckJugador.AnadirCarta(equip);
-            characterPropio.AnadirEquip(equip);
+            characterPropio.AnadirEquip(equip,deckJugador);
 
             Assert.AreEqual(18, characterPropio.AttackPoints); 
             Assert.AreEqual(20, characterPropio.ResistPoints);
@@ -380,6 +419,7 @@ namespace Parcial2Scripting
             Assert.AreEqual(0, barajaEnemigo.cartas.Count());
             Assert.AreEqual(false, barajaJugador.RemoverCarta(characterJugador));
             Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
+
         }
         [Test]
         public void TestDestruirPersonaje()
@@ -404,23 +444,6 @@ namespace Parcial2Scripting
         [Test]
         public void TestJugadorPierde()
         {
-            Deck barajaJugador = new Deck("Jugador1");
-            Deck barajaEnemigo = new Deck("Jugador2");
-
-            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
-
-            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 10, 14, Character.l_Afinity.Mage);
-            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
-
-            barajaJugador.AnadirCarta(characterJugador);
-            barajaEnemigo.AnadirCarta(characterEnemigo);
-
-            tablero.Atacar(characterJugador, characterEnemigo);
-            Assert.AreEqual(0, barajaJugador.cartas.Count());
-          
-
-            Assert.AreEqual(true, tablero.PierdeJugador(barajaJugador));
-
             /*
             Deck barajaJugador = new Deck("Jugador1");
             Deck barajaEnemigo = new Deck("Jugador2");
@@ -440,6 +463,47 @@ namespace Parcial2Scripting
             Assert.AreEqual(true, tablero.PierdeJugador(barajaJugador));
 
             */
+
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 10, 14, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+            Assert.AreEqual(0, barajaJugador.cartas.Count());
+          
+
+            Assert.AreEqual(true, tablero.PierdeJugador());
+
+            Assert.AreEqual(false, tablero.PierdeRival());
+        }
+        [Test]
+        public void TestEnemigoPierde()
+        {
+
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 23, 20, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+          
+
+            Assert.AreEqual(false, tablero.PierdeJugador());
+
+            Assert.AreEqual(true, tablero.PierdeRival());
         }
         [Test]
         public void TestUnicoUsoCarta()

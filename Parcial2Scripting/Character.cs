@@ -47,7 +47,7 @@ namespace Parcial2Scripting
         }
       
 
-        public bool AnadirEquip(Equip equipo)
+        public bool AnadirEquip(Equip equipo,Deck baraja)
         {
             if (equip.Count()<=2 && equip.Count() >=0)
             {
@@ -55,6 +55,10 @@ namespace Parcial2Scripting
                 {
                     equip.Add(equipo);
                     AplicarEquip(equipo);
+                    if (equipo.aplicada)
+                    {
+                        baraja.eliminarequipo(equipo);
+                    }
                     return true;
                 }
                 return false;
