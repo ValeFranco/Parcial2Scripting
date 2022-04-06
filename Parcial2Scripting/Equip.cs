@@ -8,7 +8,7 @@ namespace Parcial2Scripting
 {
     public class Equip : Carta
     {
-        public string CartaDueno = "";
+        public string cartaDueno = "";
         public enum l_targetAttribute {AP, RP, ALL};
         public enum l_affinity {Knight, Mage, Undead, ALL};
         internal l_affinity affinity;
@@ -21,8 +21,6 @@ namespace Parcial2Scripting
             this.affinity = affinity;
             this.targetAttribute = targetAttribute;
             this.effectPoints = effectPoints;
-        }
-
-        
+        }     
     }
 }

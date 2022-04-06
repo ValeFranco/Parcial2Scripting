@@ -23,9 +23,7 @@ namespace Parcial2Scripting
           int Charactep2 = player2.cartas.IndexOf(cartaP2);
            
            if (Charactep1 !=-1 && Charactep2 !=-1)
-           {
-           
-
+           {        
                     cartaP1 = (player1.cartas.ElementAt(Charactep1)) as Character;
                     cartaP2 = (player2.cartas.ElementAt(Charactep2)) as Character;
 
@@ -33,20 +31,17 @@ namespace Parcial2Scripting
 
                if(cartaP1.resistPoints <= cartaP2.attackPoints && cartaP2.resistPoints <= cartaP1.attackPoints)
                {
-
                     //carta 1 y carta 2 tienen afinidades iguales
-                    if(cartaP1.afinity == cartaP2.afinity)
+                    if(cartaP1.affinity == cartaP2.affinity)
                     {
                         cartaP1.resistPoints -= cartaP2.attackPoints;
                         cartaP2.resistPoints -= cartaP1.attackPoints;
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
-
-
                     }
 
                     // Carta 1 tiene ventaja sobre carta 2 por ser mago
-                    else if(cartaP1.afinity == Character.l_Afinity.Mage && cartaP2.afinity == Character.l_Afinity.Undead)
+                    else if(cartaP1.affinity == Character.l_Afinity.Mage && cartaP2.affinity == Character.l_Afinity.Undead)
                     {
                         cartaP1.attackPoints+=1;
                         cartaP2.attackPoints-=1;
@@ -60,7 +55,7 @@ namespace Parcial2Scripting
 
                     //carta 1 tiene ventaja sobre carta 2 por ser caballero
 
-                    else if(cartaP1.afinity == Character.l_Afinity.Knight && cartaP2.afinity == Character.l_Afinity.Mage)
+                    else if(cartaP1.affinity == Character.l_Afinity.Knight && cartaP2.affinity == Character.l_Afinity.Mage)
                     {
                         cartaP1.attackPoints++;
                         cartaP2.attackPoints--;
@@ -75,8 +70,8 @@ namespace Parcial2Scripting
 
                     // carta 1 tiene ventaja sobre carta 2 por ser undead
 
-                     else if( cartaP1.afinity == Character.l_Afinity.Undead && cartaP2.afinity == Character.l_Afinity.Knight)
-                    {
+                     else if( cartaP1.affinity == Character.l_Afinity.Undead && cartaP2.affinity == Character.l_Afinity.Knight)
+                     {
                         cartaP1.attackPoints++;
                         cartaP2.attackPoints--;
 
@@ -85,8 +80,7 @@ namespace Parcial2Scripting
 
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
-                    }
-
+                     }
 
                     //SI NO ESTA EN VENTAJA, ESTA EN DESVENTAJA, ENTONCES:
                     else
@@ -100,12 +94,9 @@ namespace Parcial2Scripting
                         player1.RemoverCarta(cartaP1);
                         player2.RemoverCarta(cartaP2);
                     }
-
-
-                }
-
+               }
                else
-                {
+               {
                     //baraj
                     cartaP1.resistPoints -= cartaP2.attackPoints;
                     cartaP2.resistPoints -= cartaP1.attackPoints;
@@ -113,9 +104,7 @@ namespace Parcial2Scripting
                     player1.RemoverCarta(cartaP1);
                     player2.RemoverCarta(cartaP2);
 
-                }
-
-
+               }
                // carta1: 4 AP y 5RP MAGO
                // carta2 5 AP y 4 RP UNDEAD
 
@@ -128,17 +117,11 @@ namespace Parcial2Scripting
 
                //carta1: 5AP y 1 RP
                //carta2  4AP -1RP
-
-
             }
             else
             {
                     throw new Exception("No existe este personaje en la baraja del jugador");
             }
-
-            
-          
-
         }
         public void SupporActive(SupportSkill cartaP1, Character cartaP2)
         {
@@ -169,7 +152,6 @@ namespace Parcial2Scripting
                     cartaP2.equip.RemoveAt(0);
                     }
                 player1.cartas.Remove(cartaP1);
-
             }
             else
             {
@@ -178,30 +160,24 @@ namespace Parcial2Scripting
                 {
                     if (cartaP1.effectType.ToString() == "RestoreRP")
                     {
-                        if (cartaP2.ResistPoints + cartaP1.effectPoints > cartaP2.Heald)//si es mayor 
+                        if (cartaP2.ResistPoints + cartaP1.effectPoints > cartaP2.health)//si es mayor 
                         {
-                            cartaP2.ResistPoints = cartaP2.Heald;
+                            cartaP2.ResistPoints = cartaP2.health;
                             foreach (Carta elemento in player1.cartas)
                             {
                                 if (elemento is Character)
                                 {
                                     cartaP2.ResistPoints = (elemento as Character).ResistPoints;
                                 }
-
-
                             }
                         }
                         else
                         {
                             cartaP2.ResistPoints += cartaP1.effectPoints;
-
                         }
-
-
                     }
                     else if (cartaP1.effectType.ToString() == "DestroyEquip")
                     {
-
                         cartaP2.equip.RemoveAt(0);
                     }
                     player1.cartas.Remove(cartaP1);
@@ -212,7 +188,6 @@ namespace Parcial2Scripting
                 }
             }
         }
-
         public bool PierdeJugador(Deck player1)
         {
             bool result=true;
@@ -228,16 +203,13 @@ namespace Parcial2Scripting
                     {
                         result = true;
                     }
-
                 }
             }
             else
             {
                 result = true;
             }
-
             return result;
-
         }
 
     }

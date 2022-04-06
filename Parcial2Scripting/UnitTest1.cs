@@ -10,7 +10,6 @@ namespace Parcial2Scripting
         public void Setup()
         {
         }
-        //A?adir carta a la baraja
         [Test]
         public void TestAnadirCarta()
         {
@@ -381,7 +380,6 @@ namespace Parcial2Scripting
             Assert.AreEqual(0, barajaEnemigo.cartas.Count());
             Assert.AreEqual(false, barajaJugador.RemoverCarta(characterJugador));
             Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
-
         }
         [Test]
         public void TestDestruirPersonaje()
@@ -406,6 +404,23 @@ namespace Parcial2Scripting
         [Test]
         public void TestJugadorPierde()
         {
+            Deck barajaJugador = new Deck("Jugador1");
+            Deck barajaEnemigo = new Deck("Jugador2");
+
+            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
+
+            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 10, 14, Character.l_Afinity.Mage);
+            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
+
+            barajaJugador.AnadirCarta(characterJugador);
+            barajaEnemigo.AnadirCarta(characterEnemigo);
+
+            tablero.Atacar(characterJugador, characterEnemigo);
+            Assert.AreEqual(0, barajaJugador.cartas.Count());
+          
+
+            Assert.AreEqual(true, tablero.PierdeJugador(barajaJugador));
+
             /*
             Deck barajaJugador = new Deck("Jugador1");
             Deck barajaEnemigo = new Deck("Jugador2");
@@ -425,23 +440,6 @@ namespace Parcial2Scripting
             Assert.AreEqual(true, tablero.PierdeJugador(barajaJugador));
 
             */
-
-            Deck barajaJugador = new Deck("Jugador1");
-            Deck barajaEnemigo = new Deck("Jugador2");
-
-            Tablero tablero = new Tablero(barajaJugador, barajaEnemigo);
-
-            Character characterJugador = new Character("prueba", 20, Carta.l_Rarity.Rare, 10, 14, Character.l_Afinity.Mage);
-            Character characterEnemigo = new Character("prueba", 20, Carta.l_Rarity.Rare, 14, 16, Character.l_Afinity.Mage);
-
-            barajaJugador.AnadirCarta(characterJugador);
-            barajaEnemigo.AnadirCarta(characterEnemigo);
-
-            tablero.Atacar(characterJugador, characterEnemigo);
-            Assert.AreEqual(0, barajaJugador.cartas.Count());
-          
-
-            Assert.AreEqual(true, tablero.PierdeJugador(barajaJugador));
         }
         [Test]
         public void TestUnicoUsoCarta()

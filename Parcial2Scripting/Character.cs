@@ -10,7 +10,7 @@ namespace Parcial2Scripting
     {
         internal int attackPoints;
         internal int resistPoints;
-        public  int Heald;
+        public  int health;
         internal List<Equip> equip;
         public enum l_Afinity
         {
@@ -18,15 +18,15 @@ namespace Parcial2Scripting
             Mage,
             Undead
         };
-        internal l_Afinity afinity;
+        internal l_Afinity affinity;
 
-        public Character(string name, int costPoint,l_Rarity rarity, int attackPoints, int resistPoints,  l_Afinity afinity): base(name, costPoint, rarity)
+        public Character(string name, int costPoint,l_Rarity rarity, int attackPoints, int resistPoints,  l_Afinity affinity): base(name, costPoint, rarity)
         {
             AttackPoints = attackPoints;
             ResistPoints = resistPoints;
-            this.afinity = afinity;
+            this.affinity = affinity;
             equip = new List<Equip>();
-            Heald = resistPoints;
+            health = resistPoints;
         }
 
         internal int AttackPoints
@@ -51,7 +51,7 @@ namespace Parcial2Scripting
         {
             if (equip.Count()<=2 && equip.Count() >=0)
             {
-                if (equipo.affinity.ToString()== afinity.ToString() || equipo.affinity.ToString()== "ALL")
+                if (equipo.affinity.ToString()== affinity.ToString() || equipo.affinity.ToString()== "ALL")
                 {
                     equip.Add(equipo);
                     AplicarEquip(equipo);

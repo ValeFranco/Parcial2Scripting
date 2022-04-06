@@ -17,22 +17,17 @@ namespace Parcial2Scripting
             this.effectType = effectType;
             EffectPoints = effectPoints;
         }
-
         internal int EffectPoints { get => effectPoints; set
             {
                 if (value > 0)
                 {
                     effectPoints = value;
-                }
-                    
+                }                   
                 else
                 {
                     throw new Exception("no puede ser el CostPoint 0 o inferior");
-                }
-                    
+                }                   
             }
         }
-
-
     }
 }

@@ -15,7 +15,6 @@ namespace Parcial2Scripting
         private byte equipCount;
         private byte supportCount;
 
-
         public Deck(string nombreJugador)
         {
             NombreJugador = nombreJugador;
@@ -24,10 +23,7 @@ namespace Parcial2Scripting
             equipCount = 0;
 
             cartas = new List<Carta>();
-
         }
-
-
         internal string NombreJugador
         {
             get => nombreJugador;
@@ -45,8 +41,7 @@ namespace Parcial2Scripting
         }
 
        public void AnadirCarta(Carta carta)
-       {
-            
+       {           
             if (cartas.Count()==0)
             {
                 if(carta is Character)
@@ -57,27 +52,22 @@ namespace Parcial2Scripting
                         characterCount++;
                         totalPoints -= carta.CostPoint;
                         return;
-
                     }
                     else
                     {
                         throw new Exception("No tienes suficientes costPoints para anadir esta carta");
-                    }
-                  
+                    }    
                 }
-
                 else
                 {
                     throw new Exception("la primera carta DEBE de ser un character");
                 }
-
             }
             else
             {
                 if(totalPoints >= carta.CostPoint)
                 {
-                    
-
+                   
                     if(carta is Character)
                     {
                         if(characterCount<5)
@@ -86,12 +76,10 @@ namespace Parcial2Scripting
                             totalPoints -= carta.CostPoint;
                             characterCount++;
                         }
-
                         else
                         {
                             throw new Exception("Has superado el limite de cartas tipo character");
-                        }
-                       
+                        }                     
                     }
                     else if(carta is SupportSkill)
                     {
@@ -101,13 +89,10 @@ namespace Parcial2Scripting
                             totalPoints -= carta.CostPoint;
                             supportCount++;
                         }
-
                         else
                         {
                             throw new Exception("Has superado el limite de cartas tipo supportSkill");
                         }
-
-
                     }
                     else if( carta is Equip)
                     {
@@ -122,19 +107,13 @@ namespace Parcial2Scripting
                         {
                             throw new Exception("Has superado el limite de cartas tipo equip");
                         }
-
                     }
-
-                  
                 }
-
                 else
                 {
                     throw new Exception("No tienes suficientes costPoints para anadir esta carta");
                 }
-
             }
-
         }
        public bool RemoverCarta(Character character) 
        {
@@ -153,6 +132,5 @@ namespace Parcial2Scripting
             }
             return result;
        }
-
     }
 }
