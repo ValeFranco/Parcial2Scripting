@@ -161,7 +161,6 @@ namespace Parcial2Scripting
             var exception = Assert.Throws<System.Exception>(() => character.AnadirEquip(Equip4, deckJugador));
             Assert.AreEqual("No se pueden equipar mas de tres cartas tipo equip", exception.Message);
         }
-
         [Test]
         public void TestEliminarEquipoBaraja()
         {
@@ -203,7 +202,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
+            tablero.SupportActive(supportSkillJugador, characterEnemigo); 
 
             Assert.AreEqual(7, characterEnemigo.AttackPoints); 
         } 
@@ -225,7 +224,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
+            tablero.SupportActive(supportSkillJugador, characterEnemigo); 
             
             Assert.AreEqual(2, characterEnemigo.ResistPoints); 
         } 
@@ -245,7 +244,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(supportSkillJugador);
             deckEnemigo.AnadirCarta(characterEnemigo);
 
-            tablero.SupporActive(supportSkillJugador, characterEnemigo); 
+            tablero.SupportActive(supportSkillJugador, characterEnemigo); 
             
             Assert.AreEqual(10, characterEnemigo.AttackPoints);
             Assert.AreEqual(2, characterEnemigo.ResistPoints);
@@ -267,7 +266,7 @@ namespace Parcial2Scripting
             deckEnemigo.AnadirCarta(characterEnemigo);
 
             tablero.Atacar(target, characterEnemigo);
-            tablero.SupporActive(supportSkillJugador, target);
+            tablero.SupportActive(supportSkillJugador, target);
             Assert.AreEqual(1, deckJugador.cartas.Count());
             Assert.AreEqual(10, target.ResistPoints);
         }
@@ -302,7 +301,7 @@ namespace Parcial2Scripting
             deckJugador.AnadirCarta(removeEquip);
             Assert.AreEqual(2, deckJugador.cartas.Count());
             // aplicamos la carta  y la eliminamos de la baraja 
-            tablero.SupporActive(removeEquip,target);
+            tablero.SupportActive(removeEquip,target);
              //comprobamo
             Assert.AreEqual(equips, target.equip);
             Assert.AreEqual(1,deckJugador.cartas.Count());
