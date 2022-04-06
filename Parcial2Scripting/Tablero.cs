@@ -124,7 +124,7 @@ namespace Parcial2Scripting
                     throw new Exception("No existe este personaje en la baraja del jugador");
             }
         }
-        public void SupporActive(SupportSkill cartaP1, Character cartaP2)
+        public void SupportActive(SupportSkill cartaP1, Character cartaP2)
         {
             int carta1 = player1.cartas.IndexOf(cartaP1); //si el support exite  en la baraja
             int carta2 = player2.cartas.IndexOf(cartaP2); // si exite el personaje en la baraja enemiga
