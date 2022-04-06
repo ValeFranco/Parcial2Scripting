@@ -106,7 +106,7 @@ namespace Parcial2Scripting
 
                else
                 {
-
+                    //baraj
                     cartaP1.resistPoints -= cartaP2.attackPoints;
                     cartaP2.resistPoints -= cartaP1.attackPoints;
 
