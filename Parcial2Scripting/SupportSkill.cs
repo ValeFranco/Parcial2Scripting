@@ -10,15 +10,15 @@ namespace Parcial2Scripting
     {
         public enum l_effectType {ReduceAP,ReduceRP,ReduceAll,DestroyEquip,RestoreRP}
         internal l_effectType effectType;
-        internal uint effectPoints;
+        internal int effectPoints;
 
-        public SupportSkill(string name, uint costPoint, l_Rarity rarity, l_effectType effectType, uint effectPoints): base(name, costPoint,rarity) 
+        public SupportSkill(string name, int costPoint, l_Rarity rarity, l_effectType effectType, int effectPoints): base(name, costPoint,rarity) 
         {
             this.effectType = effectType;
             EffectPoints = effectPoints;
         }
 
-        internal uint EffectPoints { get => effectPoints; set
+        internal int EffectPoints { get => effectPoints; set
             {
                 if (value > 0)
                 {

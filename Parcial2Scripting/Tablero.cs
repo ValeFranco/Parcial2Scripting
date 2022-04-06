@@ -48,8 +48,8 @@ namespace Parcial2Scripting
                     // Carta 1 tiene ventaja sobre carta 2 por ser mago
                     else if(cartaP1.afinity == Character.l_Afinity.Mage && cartaP2.afinity == Character.l_Afinity.Undead)
                     {
-                        cartaP1.attackPoints++;
-                        cartaP2.attackPoints--;
+                        cartaP1.attackPoints+=1;
+                        cartaP2.attackPoints-=1;
 
                         cartaP1.resistPoints -= cartaP2.attackPoints;
                         cartaP2.resistPoints -= cartaP1.attackPoints;
@@ -150,6 +150,7 @@ namespace Parcial2Scripting
             {
                     if (cartaP1.effectType.ToString() == "ReduceAP")
                     {
+                        
                         cartaP2.AttackPoints -= cartaP1.effectPoints;
 
                     }

@@ -10,11 +10,11 @@ namespace Parcial2Scripting
      public abstract class Carta
     {
         private string name;
-        private uint costPoint;
+        private int costPoint;
         public enum l_Rarity { Common, Rare, SuperRare, UltraRare };
         public l_Rarity rarity;
 
-        public Carta(string name, uint costPoint, l_Rarity rarity)
+        public Carta(string name, int costPoint, l_Rarity rarity)
         {
             this.rarity = rarity;
             Name = name;
@@ -38,7 +38,7 @@ namespace Parcial2Scripting
 
             }
         }
-        internal uint CostPoint { get => costPoint; set
+        internal int CostPoint { get => costPoint; set
             {
                 if (value > 0) costPoint = value;
                 else throw new Exception("no puede ser el CostPoint 0 o inferior   ");

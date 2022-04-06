@@ -8,9 +8,9 @@ namespace Parcial2Scripting
 {
     public class Character : Carta
     {
-        internal uint attackPoints;
-        internal uint resistPoints;
-        public  uint Heald;
+        internal int attackPoints;
+        internal int resistPoints;
+        public  int Heald;
         internal List<Equip> equip;
         public enum l_Afinity
         {
@@ -20,7 +20,7 @@ namespace Parcial2Scripting
         };
         internal l_Afinity afinity;
 
-        public Character(string name, uint costPoint,l_Rarity rarity, uint attackPoints, uint resistPoints,  l_Afinity afinity): base(name, costPoint, rarity)
+        public Character(string name, int costPoint,l_Rarity rarity, int attackPoints, int resistPoints,  l_Afinity afinity): base(name, costPoint, rarity)
         {
             AttackPoints = attackPoints;
             ResistPoints = resistPoints;
@@ -29,7 +29,7 @@ namespace Parcial2Scripting
             Heald = resistPoints;
         }
 
-        internal uint AttackPoints
+        internal int AttackPoints
         {
             get => attackPoints; set
             {
@@ -37,7 +37,7 @@ namespace Parcial2Scripting
                 else throw new Exception("Los attackPoints no pueden ser menor a cero");
             }
         }
-        internal uint ResistPoints
+        internal int ResistPoints
         {
             get => resistPoints; set
             {

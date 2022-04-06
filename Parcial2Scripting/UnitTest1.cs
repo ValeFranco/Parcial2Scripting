@@ -378,7 +378,7 @@ namespace Parcial2Scripting
             barajaEnemigo.AnadirCarta(characterEnemigo);
 
             tablero.Atacar(characterJugador, characterEnemigo);
-
+            Assert.AreEqual(0, barajaEnemigo.cartas.Count());
             Assert.AreEqual(false, barajaJugador.RemoverCarta(characterJugador));
             Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
 
@@ -399,6 +399,7 @@ namespace Parcial2Scripting
 
             tablero.Atacar(characterJugador, characterEnemigo);
             Assert.AreEqual(0, barajaEnemigo.cartas.Count());
+
             Assert.AreEqual(true, barajaEnemigo.RemoverCarta(characterEnemigo));
     
         }
